@@ -25,7 +25,7 @@
 }
 
 .input{
-    width: 80vw;
+    width: 70vw;
     height: 40px;
     @include auth-input;
 }
@@ -40,27 +40,48 @@
     color: rgb(175, 175, 175);
 }
 .button{
-    width: 81.5vw;
+    width: 71.5vw;
     height: 40px;
     margin-top: 30px;
     @include auth-button;
 }
 .button-change{
-    width: 81.5vw;
+    width: 71.5vw;
     height: 40px;
     margin-top: 30px;
     @include auth-button-change;
 }
+.link{
+    margin-top: 30px;
+}
+.link a{
+    font-size: $primary-font-size;
+    text-decoration: none;
+    color: black;
+}
 
 
-@media (min-width:$breakpoint-tablet){
+@media (min-width: $breakpoint-tablet){
     .input {
-        width: 55vw;
+        width: 45vw;
     }
     .button {
-        width: 55vw;
+        width: 45vw;
     }
     .button-change {
-        width: 55vw;
+        width: 46vw;
     }
 }
+
+@media (min-width: $breakpoint-desktop){
+    .input {
+        width: 30vw;
+    }
+    .button {
+        width: 30vw;
+    }
+    .button-change {
+        width: 31vw;
+    }
+}
+

@@ -2,9 +2,12 @@ $primary-box-color: rgb(255, 255, 255);
 $primary-body-color: rgb(235, 235, 235);
 $primary-text-color: rgb(0, 0, 0);
 $primary-input-color: rgb(240, 240, 240);
+$primary-font-size: 14px;
 
 $breakpoint-tablet: 768px;
+$breakpoint-desktop: 901px;
 
+//Auth Mixin
 @mixin flex-container {
     display: flex;
     justify-content: center;
@@ -16,6 +19,7 @@ $breakpoint-tablet: 768px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-decoration: none;
 }
 @mixin auth-input{
     border-top-style: hidden;
@@ -26,21 +30,27 @@ $breakpoint-tablet: 768px;
     border-color: rgb(200, 200, 200);
     font-size: 16px;
     text-indent: 5px;
-    
-    
-    
     // background-color: #eee;
-    
 }
-
 @mixin auth-button{
     background-color: #e7e7e7;
     border: none;
     color: rgb(197, 194, 194);
 }
-
 @mixin auth-button-change{
     background-color: #202020;
     border: none;
     color: rgb(197, 194, 194);
+}
+
+
+//Nav Mixin
+@mixin nav{
+    display:flex;
+    justify-content: center;
+    left: 25px;
+    text-decoration: none;
+    color: black;
+    width:50px;
+    margin: 10px auto;
 }

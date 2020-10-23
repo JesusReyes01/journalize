@@ -3,6 +3,7 @@ const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
 const authCtrl = require('./authController')
+const entryCtrl = require('./entryController')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express();
@@ -31,6 +32,11 @@ massive({
 app.post('/api/register', authCtrl.register);
 app.post('/api/login', authCtrl.login);
 app.get('/api/logout', authCtrl.logout);
+//Entry Endpoints
+app.get('/api/entries', entryCtrl.getAllEntries)
+app.get('/api/entries/single/:id', entryCtrl.getSingleEntry)
+app.post('/api/entries/create', entryCtrl.createEntry)
+app.delete('/api/entries/:id', entryCtrl.deleteEntry)
 
 
 

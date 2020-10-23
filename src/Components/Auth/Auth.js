@@ -1,7 +1,9 @@
-import React,{useState, useEffect} from 'react';
+import logo from '../../assets/journal-logo.png'
+import React,{useState} from 'react';
 import axios from 'axios';
 import '../Auth/Auth.scss'
-import logo from '../../journal-logo.png'
+import {connect} from 'react-redux'
+import {getUser} from '../../Redux/Authreducer'
 
 
 function Auth(props) {
@@ -10,14 +12,19 @@ function Auth(props) {
         password: '',
         verPassword: '',
         profilePicture: '',
-        registerView: false
-      })
+        registerView: false,
+        forgotLoginView: false
+    })
 
 
     const handleInput = (event) => {
+        // console.log(event.target)//
         sState({...state, [event.target.name]: event.target.value})
     }  
-
+    // const handleToggle = (event) => {
+    //     console.log(event.target)
+    //     sState({...state, [event.target.name]: !state.event.target.name})
+    // }  
     const handleToggle = () => {
         sState({...state, registerView: !state.registerView})
     }
@@ -28,7 +35,7 @@ function Auth(props) {
         axios
         .post('/api/login', {email, password})
         .then(res => {
-            // props.getUser(res.data)//redux function
+            props.getUser(res.data)
             props.history.push('/dashboard')
         })
         .catch(err => console.log(err))
@@ -39,7 +46,7 @@ function Auth(props) {
         if(password && password === verPassword){
             axios.post('/api/register', {email,  password})
             .then(res => {
-                // props.getUser(res.data);//redux function
+                props.getUser(res.data);
                 props.history.push('/dashboard');
                 
             })
@@ -49,18 +56,25 @@ function Auth(props) {
             alert(`Passwords don't match`)
         }
     }
-
-
-
     return (    
         <div className ='auth-body'>
             <header className='header'>
-                {state.registerView
-                ?<span onClick={handleToggle}>LOG IN</span>
-                :<span onClick={handleToggle}>CREATE ACCOUNT</span>
+                {/* {state.registerView
+                ?<span 
+                    name='registerView'
+                    onClick={(e) =>  handleToggle(e)}>LOG IN</span>
+                :<div 
+                    name='password'
+                    onClick={(e) => handleToggle(e)}>CREATE ACCOUNT</div>
+                } */}
+                 {state.registerView
+                ?<span 
+                    name='registerView'
+                    onClick={handleToggle}>LOG IN</span>
+                :<span 
+                    name='registerView'
+                    onClick={handleToggle}>CREATE ACCOUNT</span>
                 }
-                {/* <span onClick={handleToggle}>CREATE ACCOUNT</span>
-                <span onClick={handleToggle}>LOG IN</span> */}
             </header>
             
             <section className='auth-box'>
@@ -106,17 +120,22 @@ function Auth(props) {
                        </>)
                     : (<div>
                         <button 
-                            // {this.state.email && this.state.password 
-                            // ? className='button'
-                            // : className='button'}
                             className={state.email && state.password?'button-change':'button'}
                             onClick={handleLogin}
                                 >LOG IN</button>
                         
-                       </div>)}
+                       </div>)
+                }
+                <div className='link'>
+                    <span 
+                    name='forgotLoginView'
+                    onClick={handleToggle}>CAN'T LOG IN?</span>
+                </div>
+
             </section>
         </div>
     )
 }
 
-export default Auth
+
+export default connect(null, {getUser})(Auth);
