@@ -44,12 +44,13 @@ function NewEntry(props) {
 
     return (
               <div>
-                <div className='entry-save-button-cont'>
-                    <button 
-                        className='entry-save-button'
-                        onClick={handleSubmit}>SAVE</button>
-                    </div>
                 <div className='new-entry'>
+                    <div className='entry-save-button-cont'>
+                        <button 
+                            className='entry-save-button'
+                            onClick={handleSubmit}>SAVE</button>
+                    </div>
+                    
                     <section className='title-header'>
                         <input
                             className ='title-input'
@@ -62,12 +63,12 @@ function NewEntry(props) {
                             onClick={calToggle}
                                 >{displayDate}</div>   
                         {state.calToggle?
-                            <div className = 'calender'>
-                                <Calendar
-                                    onChange={calInput}
-                                    value={state.date}/>
-                            </div>
-                            :null}
+                        <div className = 'calender'>
+                            <Calendar
+                                onChange={calInput}
+                                value={state.date}/>
+                        </div>
+                        :null}
                         
                     </section>
 

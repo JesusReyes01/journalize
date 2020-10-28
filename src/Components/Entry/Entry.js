@@ -1,38 +1,122 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+import {connect} from 'react-redux'
+import './Entry.scss';
+import Calendar from 'react-calendar'
+import 'react-calendar/dist/Calendar.css';
 
-function Entry() {
-    return <h1>Entry</h1>;
+function Entry(props) {
+    const [state, sState] = useState({
+        title: '',
+        date: [],
+        img: '',
+        content: '',
+        calToggle: false
+    })
+    useEffect(()=> {
+        if(!props.authReducer.user.email){
+            props.history.push('/')
+        }
+        else{
+            getSingleEntry();
+        }
+    },[])
+    
+    //axios request
+    const getSingleEntry = () => {
+        const {entryId} = props.match.params;
+        console.log(entryId)
+        axios
+            .get(`/api/entries/single/${entryId}`)
+            .then(res => {
+                sState({...state,
+                        title: res.data.title,
+                        date: [res.data.date],
+                        img: res.data.img,
+                        content: res.data.content })})
+        .catch(err => console.log(err.request));
+    }
+    const handleDelete = () => {
+        const {entryId} = props.match.params;
+        axios
+            .delete(`/api/entries/${entryId}`)
+            .then(() => this.props.history.push('/dashboard'))
+            .catch(err => console.log(err))
+     }
+     const handleUpdate = () => {
+        const {title,date, img, content} = state;
+        const {entryId} = props.match.params;
+        let fmtDate = date[0]
+        axios
+            .put(`/api/updateEntry/${entryId}`, {title, fmtDate, img, content})
+            .then(() => props.history.push('/dashboard'))
+            .catch(err => console.log(err))
+    }
+
+    const handleInput = (event) => {
+        sState({...state, [event.target.name]: event.target.value})
+    } 
+    const calInput = (date) => {
+        sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
+    }
+
+
+    //Calender Display
+    const calToggle = () => {
+        console.log(state.calToggle)
+        sState({...state, calToggle: !state.calToggle})
+    }
+    let displayDate  = state.date[0]  
+
+    return (
+        <div>
+                
+                <div className='new-entry'>
+                    <div className='entry-save-button-cont'>
+                        <button 
+                            className='entry-save-button'
+                            onClick={handleUpdate}>SAVE</button>
+                    </div>
+                    <section className='title-header'>
+                        <input
+                            className ='title-input'
+                            name='title'
+                            placeholder='Entry Title'
+                            value={state.title}
+                            onChange={handleInput}/>
+                        <div
+                            className='date-toggle'
+                            onClick={calToggle}
+                                >{displayDate}</div>   
+                        {state.calToggle?
+                            <div className = 'calender'>
+                                <Calendar
+                                    onChange={calInput}
+                                    value={state.date}/>
+                            </div>
+                            :null}
+                        
+                    </section>
+
+                    <section >  
+                        <textarea
+                            className='entry-content'
+                            name='content'
+                            value={state.content}
+                            placeholder='Your entry here'
+                            onChange={handleInput}/>
+                    </section>
+                </div>
+            </div>
+    
+    )
 }
 
-export default Entry;
+const mapStateToProps = reduxState => reduxState;
+export default connect(mapStateToProps)(Entry);
 
 
-// import React, {Component} from 'react'
-// import axios from 'axios'
-// import {connect} from 'react-redux'
-// import './Post.css';
 
-
-// class Post extends Component {
-//     constructor(props){
-//         super(props)
-//         this.state = {
-//             post: {}
-//         }
-//     }
-//     componentDidMount() {
-//         if(!this.props.user.username){
-//             this.props.history.push('/')
-//         }
-//         else{
-//             const {postId} = this.props.match.params;
-//             console.log(postId)
-//             axios
-//             .get(`/api/posts/single/${postId}`)
-//             .then(res => this.setState({ post: res.data }))
-//             .catch(err => console.log(err.request));
-//         }
-        
 //      }
 
 //      handleDelete = () => {

@@ -36,6 +36,7 @@ app.post('/api/logout', authCtrl.logout);
 app.get('/api/entries', entryCtrl.getAllEntries)
 app.get('/api/entries/single/:id', entryCtrl.getSingleEntry)
 app.post('/api/entries/create', entryCtrl.createEntry)
+app.put('/api/updateEntry/:id', entryCtrl.updateEntry)
 app.delete('/api/entries/:id', entryCtrl.deleteEntry)
 
 
