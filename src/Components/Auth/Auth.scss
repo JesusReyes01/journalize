@@ -9,6 +9,8 @@
     padding: 20px;
     @include flex-container;
     justify-content: flex-end;
+    font-family: $primary-font-family;
+    font-size: 20px;
 }
 .auth-box{
     // height: 600px;
@@ -16,11 +18,11 @@
     position: fixed;
     top: 50%;
     left: 50%;
-
     transform: translate(-50%, -50%);
     background-color: $primary-box-color;
     color: $primary-text-color;
     @include flex-container-column;
+    font-size: 20px;
     
 }
 
@@ -28,6 +30,7 @@
     width: 70vw;
     height: 40px;
     @include auth-input;
+    font-size: 20px;
 }
 .input:focus{
     background-color: $primary-input-color;
@@ -44,6 +47,7 @@
     height: 40px;
     margin-top: 30px;
     @include auth-button;
+    font-size: 20px;
 }
 .button-change{
     width: 71.5vw;

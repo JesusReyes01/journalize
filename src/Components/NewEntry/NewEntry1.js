@@ -1,31 +1,28 @@
 import React, {useState, useEffect} from 'react'
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import BalloonBlockEditor from '@ckeditor/ckeditor5-build-balloon-block';
 import axios from 'axios'
 import {connect} from 'react-redux'
 import './NewEntry.scss'
-import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css';
 
 function NewEntry(props) {
     const [state, sState] = useState({
         title: '',
-        date: new Date(),
+        date: '',
         img: '',
-        content: '',
-        calToggle: false
+        content: ''
     })
 
-    // useEffect(()=> {
-    //     if(!props.authReducer.user.email){
-    //         props.history.push('/')
-    //     }
-    // })
+    useEffect(()=> {
+        if(!props.authReducer.user.email){
+            props.history.push('/')
+        }
+    })
 
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     } 
-    const calInput = (date) => {
-        sState({...state, date, calToggle: false}) 
-    }
 
     const handleSubmit = () => {
         const {title,date, img, content} = state;
@@ -33,40 +30,20 @@ function NewEntry(props) {
             .post('/api/entries/create', {title, date, img, content})
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
-    }
-    //Calender Display
-    const calToggle = () => {
-        console.log(state.calToggle)
-        sState({...state, calToggle: !state.calToggle})
-    }
-    let displayDate  = state.date.toLocaleString().split(",")[0]
-    
+}
+
 
     return (
               <div>
-                <button 
-                    className='entry-save-button'
-                    onClick={handleSubmit}>SAVE</button>
+                {/* <h1>New Entry</h1> */}
                 <div className='new-entry'>
-                    <section className='title-header'>
+                    <section >
                         <input
                             className ='title-input'
                             name='title'
                             placeholder='Entry Title'
                             value={state.title}
                             onChange={handleInput}/>
-                        <div
-                            className='date-toggle'
-                            onClick={calToggle}
-                                >{displayDate}</div>   
-                        {state.calToggle?
-                            <div className = 'calender'>
-                                <Calendar
-                                    onChange={calInput}
-                                    value={state.date}/>
-                            </div>
-                            :null}
-                        
                     </section>
 
                     {/* <div>
@@ -82,14 +59,27 @@ function NewEntry(props) {
                     </section> */}
 
                     <section >  
-                        <textarea
-                            className='entry-content'
-                            name='content'
-                            value={state.content}
-                            placeholder='Your entry here'
-                            onChange={handleInput}/>
+                    <CKEditor
+                        editor={ ClassicEditor }
+                        data="<p></p>"
+                        onInit={ editor => {
+                            // You can store the "editor" and use when it is needed.
+                            console.log( 'Editor is ready to use!', editor );
+                        } }
+                        onChange={ ( event, editor ) => {
+                            const data = editor.getData();
+                            sState({...state, content: data})
+                            // console.log( { event, editor, data } );
+                        } }
+                        onBlur={ ( event, editor ) => {
+                            console.log( 'Blur.', editor );
+                        } }
+                        onFocus={ ( event, editor ) => {
+                            console.log( 'Focus.', editor );
+                        } }
+                    />
                     </section>
-                    
+                    <button onClick={handleSubmit}>SAVE</button>
                 </div>
             </div>
     

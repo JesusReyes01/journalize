@@ -1,0 +1,60 @@
+@import '../../variables';
+
+
+.menu-user{
+    @include menu;
+    width: 30px;
+    font-size: $mobile-font-size;
+
+}
+.menu-home{
+    @include menu;
+    width: 30px;
+}
+.menu-new-entry{
+    @include menu;
+    width: 30px;
+}
+.logout-button{
+    @include menu;
+    position: absolute;
+    width: 30px;
+    bottom: 20px;
+    left: 10px;
+}
+
+@media (min-width: $breakpoint-tablet){
+    .menu-user{
+        width: 50px;
+        font-size: $tablet-font-size;
+    }
+    .menu-home{
+        width: 50px;
+    }
+    .menu-new-entry{
+        width: 50px;
+    }
+    .logout-button{
+        width: 50px;
+        bottom: 20px;
+        left: 25px;
+    }
+}
+
+@media (min-width: $breakpoint-desktop){
+    .menu-user{
+        width: 70px;
+        font-size: $desktop-font-size;
+    }
+    .menu-home{
+        width: 70px;
+    }
+    .menu-new-entry{
+        width: 70px;
+    }
+    .logout-button{
+        width: 70px;
+        bottom: 20px;
+        left: 25px;
+    }
+}

@@ -10,13 +10,18 @@ function Dashboard(props) {
         entries: []
     })
     useEffect(()=> {
-        getEntry();
-    }, [])
+        if(!props.authReducer.user.email){
+            props.history.push('/')
+        }
+        else{
+            getEntry();
+        }
+    },[])
     
     const getEntry = () => {
         axios.get('/api/entries')
         .then(res => sState({...state, entries: res.data}))
-        .catch(err => console.log('get request failed'))
+        .catch(err => console.log('get entry request failed'))
         // const {myPost, search} = this.state;
         // axios.get(`/api/posts/${myPost}?search=${search}`)
         // .then(res => this.setState({posts: res.data, search: ''}))

@@ -3,11 +3,13 @@ import React,{useState} from 'react';
 import axios from 'axios';
 import '../Auth/Auth.scss'
 import {connect} from 'react-redux'
-import {getUser} from '../../Redux/Authreducer'
+import {getUser} from '../../Redux/authReducer'
 
 
 function Auth(props) {
     const [state, sState] = useState({
+        firstName: '',
+        lastName: '',
         email: '',
         password: '',
         verPassword: '',
@@ -36,18 +38,18 @@ function Auth(props) {
         .post('/api/login', {email, password})
         .then(res => {
             props.getUser(res.data)
-            props.history.push('/dashboard')
+            props.history.push('/new')
         })
         .catch(err => console.log(err))
     }
 
     const handleRegister = () => {
-        const {email, password, verPassword} = state;
+        const {firstName, lastName, email, password, verPassword} = state;
         if(password && password === verPassword){
-            axios.post('/api/register', {email,  password})
+            axios.post('/api/register', {firstName, lastName, email,  password})
             .then(res => {
                 props.getUser(res.data);
-                props.history.push('/dashboard');
+                props.history.push('/new');
                 
             })
             .catch(err => console.log(err));
@@ -82,19 +84,38 @@ function Auth(props) {
                 
                 {state.registerView
                 ? <h1 >Create Your Account</h1> 
-                : <h1 >Log into Journal</h1>}
+                : <h1 >Log into Journalize</h1>}
 
 
                 <div>
+                    {state.registerView
+                    ?
+                    <>
+                        <input
+                            className='input'
+                            value={state.firstName}
+                            name='firstName'
+                            placeholder='First Name'
+                            onChange={(e) =>  handleInput(e)}
+                        />
+                        <input
+                            className='input'
+                            value={state.lastName}
+                            name='lastName'
+                            placeholder='Last Name'
+                            onChange={(e) =>  handleInput(e)}
+                    />
+                    </>     
+                    :null
+                    }
+
                     <input
                         className='input'
                         value={state.email}
                         name='email'
                         placeholder='Email Address'
                         onChange={(e) =>  handleInput(e)}/>
-                </div>
-                
-                <div> 
+                    
                     <input 
                         className='input'
                         type='password'
@@ -114,7 +135,7 @@ function Auth(props) {
                             placeholder='Verify Password'
                             onChange={(e) => handleInput(e)}/>
                         <button 
-                            className={state.email && state.password && state.verPassword?'button-change':'button'}
+                            className={state.firstName && state.lastName && state.email && state.password && state.verPassword?'button-change':'button'}
                             onClick={handleRegister}
                                 >CREATE ACCOUNT</button>
                        </>)

@@ -1,8 +1,9 @@
 module.exports = {
     getAllEntries: async (req, res) => {
         const db = req.app.get('db');
+        const {user_id} = req.session.user;
         console.log('request hit')
-        const entries = await db.get_entries()
+        const entries = await db.get_entries(user_id)
         console.log(entries)
         return res.status(200).send(entries)
     },
