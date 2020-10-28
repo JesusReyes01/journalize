@@ -75,25 +75,31 @@
     .sld{
         left: -102px;
     }
+    .nav-logo {
+        width: 40px;
+    } 
 }
 
 @media (min-width: $breakpoint-desktop){
     .nav-header{
-        height: 50px;
+        height: 60px;
     }
     .header-comp{
-        width: calc(100% - 50px);
-        font-size: $tablet-font-size;
+        width: calc(100% - 60px);
+        font-size: $desktop-font-size;
     }
     .slide{
-        width: calc(100vw - 100px);
-        margin-left: 100px;
+        width: calc(100vw - 250px);
+        margin-left: 250px;
     }
     .menu{
-        width: 100px;
+        width: 250px;
         padding-top:10px;
     }
     .sld{
-        left: -102px;
+        left: -252px;
     }
+    .nav-logo {
+        width: 50px;
+    } 
 }

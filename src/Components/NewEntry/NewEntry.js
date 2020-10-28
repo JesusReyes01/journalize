@@ -8,29 +8,30 @@ import 'react-calendar/dist/Calendar.css';
 function NewEntry(props) {
     const [state, sState] = useState({
         title: '',
-        date: new Date(),
+        date: new Date().toLocaleString().split(","),
         img: '',
         content: '',
         calToggle: false
     })
 
-    // useEffect(()=> {
-    //     if(!props.authReducer.user.email){
-    //         props.history.push('/')
-    //     }
-    // })
+    useEffect(()=> {
+        if(!props.authReducer.user.email){
+            props.history.push('/')
+        }
+    })
 
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     } 
     const calInput = (date) => {
-        sState({...state, date, calToggle: false}) 
+        sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
     }
 
     const handleSubmit = () => {
         const {title,date, img, content} = state;
+        let fmtDate = date[0]
         axios
-            .post('/api/entries/create', {title, date, img, content})
+            .post('/api/entries/create', {title, fmtDate, img, content})
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
     }
@@ -39,14 +40,15 @@ function NewEntry(props) {
         console.log(state.calToggle)
         sState({...state, calToggle: !state.calToggle})
     }
-    let displayDate  = state.date.toLocaleString().split(",")[0]
-    
+    let displayDate  = state.date[0]   
 
     return (
               <div>
-                <button 
-                    className='entry-save-button'
-                    onClick={handleSubmit}>SAVE</button>
+                <div className='entry-save-button-cont'>
+                    <button 
+                        className='entry-save-button'
+                        onClick={handleSubmit}>SAVE</button>
+                    </div>
                 <div className='new-entry'>
                     <section className='title-header'>
                         <input
@@ -68,18 +70,6 @@ function NewEntry(props) {
                             :null}
                         
                     </section>
-
-                    {/* <div>
-                        <img src={state.img} alt='Post-img'/>
-                    </div> */}
-
-                    {/* <section >
-                        <p>Image URL:</p>
-                        <input
-                        name='img'
-                        value={state.img}
-                        onChange={handleInput}/>
-                    </section> */}
 
                     <section >  
                         <textarea

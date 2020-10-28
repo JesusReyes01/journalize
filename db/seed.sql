@@ -9,7 +9,7 @@ create table if not exists app_user (
 create table if not exists app_entry (
     entry_id serial primary key,
     title varchar(250),
-    date date,
+    date varchar(250),
     img text,
     content text,
     author_id int references app_user(user_id)

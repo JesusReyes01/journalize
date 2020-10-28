@@ -4,7 +4,6 @@ module.exports = {
         const {user_id} = req.session.user;
         console.log('request hit')
         const entries = await db.get_entries(user_id)
-        console.log(entries)
         return res.status(200).send(entries)
     },
     getSingleEntry: async(req,res) => {
@@ -15,10 +14,10 @@ module.exports = {
     },
     createEntry: async(req,res) => {
         const db = req.app.get('db');
-        const {tbd} = req.body;
+        const {title, fmtDate, img, content} = req.body;
         const {user_id} = req.session.user;
-        const entry = await db.create_entry(tbd);
-        // res.status(200).send(entry[0])
+        const entry = await db.create_entry(title, fmtDate, img, content, user_id);
+        res.status(200).send("Entry created")
     },
     deleteEntry: async(req,res) => {
         const db = req.app.get('db');
