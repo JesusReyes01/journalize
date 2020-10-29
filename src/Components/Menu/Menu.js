@@ -2,9 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {clearUser} from '../../Redux/authReducer'
 import viewAll from '../../assets/view-all.png'
-import logoutLogo from '../../assets/logout.png'
 import newEntryLogo from '../../assets/add-entry.png'
 import './Menu.scss'
 
@@ -16,7 +14,7 @@ function Menu(props) {
         axios.get('/api/entries')
         .then(res => sState({...state, entries: res.data}))
         .catch(err => console.log('get entry request failed'))
-    },[props.history])
+    })
 
     let mappedEntries = state.entries.map( el => {
         return (

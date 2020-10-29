@@ -2,7 +2,6 @@ module.exports = {
     getAllEntries: async (req, res) => {
         const db = req.app.get('db');
         const {user_id} = req.session.user;
-        console.log('request hit')
         // const entries = await db.get_entries(user_id)
         // res.status(200).send(entries)
         db.get_entries(user_id)
@@ -13,8 +12,11 @@ module.exports = {
         const db = req.app.get('db');
         const {id} = req.params;
         console.log(id)
-        const entry = await db.get_single_entry(id)
-        return res.status(200).send(entry[0])
+        // const entry = await db.get_single_entry(id)
+        // return res.status(200).send(entry[0])
+        db.get_single_entry(id)
+        .then(entry => res.status(200).send(entry))
+        .catch(err => console.log(err))
     },
     createEntry: async(req,res) => {
         const db = req.app.get('db');

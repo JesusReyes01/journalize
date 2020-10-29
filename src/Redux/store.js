@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
+import {createStore, combineReducers} from 'redux';
 // import promiseMiddleware from 'redux-promise-middleware';
 import authReducer from './authReducer';
 import menuReducer from './menuReducer';

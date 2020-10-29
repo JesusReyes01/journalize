@@ -9,6 +9,7 @@
     font-family: $primary-font-family;
     position:fixed;
     top:0px;
+    background-color:white;
 }
 .slide{
     width: calc(100vw - 60px);
@@ -33,6 +34,7 @@
     left: 0px;
     border-right: 2px solid;
     transition: .3s;
+    background-color: white;
 }
 .sld{
     left: -65px;

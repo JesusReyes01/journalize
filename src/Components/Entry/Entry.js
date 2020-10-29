@@ -20,7 +20,7 @@ function Entry(props) {
         else{
             getSingleEntry();
         }
-    },[])
+    })
     
     //axios request
     const getSingleEntry = () => {

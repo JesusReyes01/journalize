@@ -2,8 +2,9 @@
 
 
 .menu-user{
-    margin: 5px auto;
-    width: 30px;
+    margin: 2.5px auto;
+    width: 50px;
+    height: 25px;
     font-size: $mobile-font-size;
 }
 .menu-view-all{
@@ -55,7 +56,7 @@
 }
 .entry-flex{
     width: 100%;
-    height: calc(100% - 250px);
+    height: 100%;
     display:flex;
     flex-direction: column;
     align-items: flex-start;
@@ -70,6 +71,7 @@
     justify-content: center;
     align-items: center;
     font-family: $primary-font-family;
+    overflow:hidden;
 
 }
 .menu-entry span{
@@ -131,9 +133,10 @@
 
 
 @media (min-width: $breakpoint-desktop){
+
 .menu-user{
     width: 150px;
-    height: 50px;
+    height: 55px;
     font-size: $desktop-font-size;
 }
 .menu-view-all{
@@ -160,7 +163,6 @@
     height: 60px;
 }
 .entry-flex{
-
     height: calc(100vh - 200px);
 }
 .menu-entry{

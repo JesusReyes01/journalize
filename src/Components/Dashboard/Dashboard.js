@@ -7,7 +7,6 @@ import './Dashboard.scss'
 function Dashboard(props) {
     const [state, sState] = useState({
         search: '',
-        myPost: true,
         entries: []
     })
     useEffect(()=> {
@@ -17,8 +16,7 @@ function Dashboard(props) {
         else{
             getEntries();
         }
-    },[])
-    
+    })
     const getEntries = () => {
         axios.get('/api/entries')
         .then(res => sState({...state, entries: res.data}))
@@ -28,24 +26,48 @@ function Dashboard(props) {
         // .then(res => this.setState({posts: res.data, search: ''}))
         // .catch(err => console.log(err))
     }
+    const handleSearch = (search) => {
+        sState({search})
+    }
+    const resetSearch = () => {
+        sState({search: ''})
+        getEntries();
+    }
     let mappedEntries = state.entries.map( el => {
         return (
-            <Link to={`/entry/${el.entry_id}`} key={el.entry_id} >
-                <div>
-                    <div>
-                        {/* <h3 >{el.title}</h3> */}
-                        <div >
-                            <p >title: {el.title}</p>
-                            {/* <img src={el.profile_picture} alt='author' /> */}
+            <Link className='entry-cmp' to={`/entry/${el.entry_id}`} key={el.entry_id}>
+                        <div className='entry-flx'>
+                            <span className='entry-ttl'>{el.title}</span>
+                            <span className='entry-cntnt'>{el.content}</span>
                         </div>
-                    </div>
-                </div>    
+                        <span className='entry-dt'>{el.date}</span>
             </Link>)})
 
         return(
             <div className='dashboard'>
-                <div className='post-table'>
-                    Dashboard
+                <header className='dash-header'>
+                    <div className='dash-header-cont'>
+                        <div className='header-ttl'>
+                            <span className='title-name'>{props.authReducer.user.first_name}'s Journal</span>
+                            <span className='entry-count'>{state.entries.length} total entries</span>
+                        </div>
+                        <div className='search-flex'>
+                            <input
+                                onChange={ e =>  handleSearch(e)}
+                                placeholder='Search by Title'
+                                />
+                            <button onClick={getEntries} className='search-button'>Search</button>
+                            <button onClick={resetSearch} className='reset-button'>Reset</button>
+                        </div>
+                    </div>
+
+
+                </header>
+                <div className='dashboard-table'>
+                    <div className='table-header'>
+                        <span className='header-entry'>Entry</span>
+                        <span className='header-date'>Date Created</span>  
+                    </div>
                     {mappedEntries}
                 </div>
             </div>
