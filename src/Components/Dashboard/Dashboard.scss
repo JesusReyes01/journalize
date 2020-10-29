@@ -1,0 +1,14 @@
+@import '../../variables';
+.dashboard{
+    margin: 50px auto;
+}
+@media (min-width: $breakpoint-tablet){
+    .dashboard{
+        margin: 80px auto;
+    }
+}
+@media (min-width: $breakpoint-desktop){
+    .dashboard{
+        margin: 100px auto;
+    }
+}

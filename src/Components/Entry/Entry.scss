@@ -1,47 +1,49 @@
 @import '../../variables';
 //save button
-.entry-save-button-cont{
+.up-entry-save-button-cont{
     width: 95%;
     display:flex;
     justify-content: flex-end;
     margin: 0 auto;
 
 }
-.entry-save-button{
-    margin:15px 0px 0px 0px;
+.up-entry-save-button{
+    margin: 15px 0px 0px 15px;
     font-size: $mobile-font-size;
     border: 2px solid black;
     transition-duration: 0.5s;
+    background-color: white;
 }
-.entry-save-button:hover {
+.up-entry-save-button:hover {
     background-color: black;
     color: white;
 }
-.new-entry{
+.up-new-entry{
     width: 250px;
     height: 342px;
-    margin: 0px auto;
+    margin: 50px auto;
     border: 2px solid black;
 }
-.title-input{
+.up-title-input{
     height: 40px;
+    width: 100%;
     @include title-input;
     font-size: 12px;
 }
-.title-input:focus{
+.up-title-input:focus{
     outline: none; 
 }
-.entry-content{
+.up-entry-content{
     width: 90%;
     height: 100%;
     border: none;
     margin-top:15px;
     font-size:$mobile-font-size;
 }
-.entry-content:focus{
+.up-entry-content:focus{
     outline: none; 
 }
-.title-header{
+.up-title-header{
     width: 95%;
     @include flex-container;
     @include new-entry-header;
@@ -51,90 +53,80 @@
 
 
 //Calender
-.date-toggle{
+.up-date-toggle{
     font-size:$mobile-font-size;
 }
-.date-toggle:hover{
+.up-date-toggle:hover{
     cursor: pointer;
 }
 
-// .calender{
-//     width: 250px;
-//     height: 100px;
-//     color: black;
-//     font-size: 11px;
-//     font-family: monospace;
-//     position: fixed;
-//     top: 25%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     z-index:99;
-// }
-
-// .react-calendar__month-view__days__day {
-//     font-size: 10px;
-//     width: 5px;
-//     padding: 0px;
-// }
+.up-calender{
+    width: 250px;
+    height: 100px;
+    color: black;
+    font-size: 11px;
+    font-family: monospace;
+    position: fixed;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:99;
+}
 
 
 @media (min-width: $breakpoint-tablet){
-    .new-entry{
-        width: 550px;
+    .up-new-entry{
+        width: 525px;
         height: 685px;
+        margin: 80px auto;
     }
-    .title-input{
+    .up-title-input{
         height: 50px;
         font-size: 18px;
     }
-    .date-toggle{
+    .up-date-toggle{
         font-size:$tablet-font-size;
     }
-    .react-calendar__month-view__days__day {
+    .up-react-calendar__month-view__days__day {
         font-size: 14px;
     }
-    .calender{
+    .up-calender{
         width: 300px;
         font-size: 18px;
         top: 19vh;
     }
-    .entry-save-button-cont{
-        width: 550px;
+    .up-entry-save-button{
+        font-size: 12px;
     }
-    .entry-save-button{
-        font-size: $tablet-font-size;
-    }
-    .entry-content{
-        height: 600px;
+    .up-entry-content{
+        height: 500px;
         font-size:$tablet-font-size;
     }
 }
 
 @media (min-width: $breakpoint-desktop){
-    .new-entry{
-        width: 800px;
-        height: 1100px;
+    .up-new-entry{
+        width: 1100px;
+        height: 1400px;
+        margin: 100px auto;
     }
-    .title-input{
+    .up-title-input{
         height: 70px;
         font-size: 30px;
     }
-    .date-toggle{
+    .up-date-toggle{
         font-size:$desktop-font-size;
 
     }
-    .calender{
+    .up-calender{
         width: 350px;
         font-size: 18px;
         top: 19vh;
     }
-    .entry-save-button-cont{
-        width: 800px;
-    }
-    .entry-save-button{
+    .up-entry-save-button{
         font-size: $desktop-font-size;
     }
-    .entry-content{
+    .up-entry-content{
         height: 1000px;
         font-size:$desktop-font-size;
     }

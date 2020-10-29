@@ -40,7 +40,7 @@ function Entry(props) {
         const {entryId} = props.match.params;
         axios
             .delete(`/api/entries/${entryId}`)
-            .then(() => this.props.history.push('/dashboard'))
+            .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
      }
      const handleUpdate = () => {
@@ -52,7 +52,6 @@ function Entry(props) {
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
     }
-
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     } 
@@ -70,26 +69,28 @@ function Entry(props) {
 
     return (
         <div>
-                
-                <div className='new-entry'>
-                    <div className='entry-save-button-cont'>
+                <div className='up-new-entry'>
+                    <div className='up-entry-save-button-cont'>
                         <button 
-                            className='entry-save-button'
+                            className='up-entry-save-button'
                             onClick={handleUpdate}>SAVE</button>
+                        <button 
+                            className='up-entry-save-button'
+                            onClick={handleDelete}>DELETE</button>
                     </div>
-                    <section className='title-header'>
+                    <section className='up-title-header'>
                         <input
-                            className ='title-input'
+                            className ='up-title-input'
                             name='title'
                             placeholder='Entry Title'
                             value={state.title}
                             onChange={handleInput}/>
                         <div
-                            className='date-toggle'
+                            className='up-date-toggle'
                             onClick={calToggle}
                                 >{displayDate}</div>   
                         {state.calToggle?
-                            <div className = 'calender'>
+                            <div className = 'up-calender'>
                                 <Calendar
                                     onChange={calInput}
                                     value={state.date}/>
@@ -100,7 +101,7 @@ function Entry(props) {
 
                     <section >  
                         <textarea
-                            className='entry-content'
+                            className='up-entry-content'
                             name='content'
                             value={state.content}
                             placeholder='Your entry here'

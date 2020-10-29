@@ -1,23 +1,44 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import axios from 'axios'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {clearUser} from '../../Redux/authReducer'
-// import logo from '../../assets/journal-logo.png'
-import homeLogo from '../../assets/house.png'
-import newEntryLogo from '../../assets/add-entry.png'
+import viewAll from '../../assets/view-all.png'
 import logoutLogo from '../../assets/logout.png'
+import newEntryLogo from '../../assets/add-entry.png'
 import './Menu.scss'
 
 function Menu(props) {
+    const [state, sState] = useState({
+        entries: []
+    })
+    useEffect(()=> {
+        axios.get('/api/entries')
+        .then(res => sState({...state, entries: res.data}))
+        .catch(err => console.log('get entry request failed'))
+    },[props.history])
+
+    let mappedEntries = state.entries.map( el => {
+        return (
+            <Link className ='menu-link' to={`/entry/${el.entry_id}`} key={el.entry_id} > 
+                <div className='menu-entry'>
+                    <span>{el.title}</span>
+                    <span>{el.date}</span>
+                </div>
+            </Link>)})
+
+
     return (
         <div {...props}>
             {/* <img className='menu-logo' src={logo} alt='Logo'/> */}
-            <span className='menu-user'>Welcome back!<br/>{props.authReducer.user.first_name}</span>
-            <Link to='/dashboard'><img className='menu-home' src={homeLogo} alt='home' /></Link>
-            <Link to='/new'><img className='menu-new-entry' src={newEntryLogo} alt='New Entry' /></Link>
-            <Link to='/' onClick={props.clearUser}><img className='logout-button' src={logoutLogo} alt='Logout' /></Link>
+            <div className='menu-user'>{props.authReducer.user.first_name}'s Journal</div>
+            <Link className='menu-new-entry' to='/new'><img className='menu-new-entry-icon' src={newEntryLogo} alt='New Entry' /> New Entry</Link>
+            <Link className='menu-view-all' to='/dashboard'><img className='menu-view-all-icon' src={viewAll} alt='home' />View All Entries</Link>
+            <div className='entry-flex'>
+                {mappedEntries}
+            </div>
         </div>
     )
 }
 const mapStateToProps = reduxState => reduxState;
-export default connect(mapStateToProps, {clearUser})(Menu);
+export default connect(mapStateToProps)(Menu);

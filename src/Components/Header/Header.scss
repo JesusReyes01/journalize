@@ -1,5 +1,4 @@
 @import '../../variables';
-
 .nav-header{
     width: 100vw;
     height: 30px;
@@ -8,10 +7,12 @@
     display:flex;
     justify-content: center;
     font-family: $primary-font-family;
+    position:fixed;
+    top:0px;
 }
 .slide{
-    width: calc(100vw - 50px);
-    margin-left: 50px;
+    width: calc(100vw - 60px);
+    margin-left: 61px;
 }
 .header-comp{
     width: calc(100% - 20px);
@@ -26,11 +27,10 @@
     cursor: pointer;
 }
 .menu{
-    width: 50px;
+    width: 61px;
     height: 100vh;
     position: fixed;
     left: 0px;
-    padding-top:10px;
     border-right: 2px solid;
     transition: .3s;
 }
@@ -53,7 +53,67 @@
 .header-drop{
     @include header;
     justify-content: flex-end;
+    transition: .3s;
 }
+.header-drop:hover{
+    cursor: pointer;
+}
+
+
+            .popup-icon{
+                width:25px;
+                margin-top:5px
+            }
+            .popup{
+                width: 160px;
+                height: 150px;
+                background-color: white;
+                position: fixed;
+                top: 50px;
+                right: 30px;
+                border: 1px solid black;
+                display:flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .inside-popup{
+                height: 40px;
+                padding: 5px 0px 5px 0px;
+                width: 120px;
+                text-align: left;
+                display:flex;
+                align-items: center;
+                text-decoration: none;
+                color:black;
+            }
+            .inside-popup:hover{
+                cursor: pointer;
+            }
+            .arrow-up {
+                width: 0; 
+                height: 0; 
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid white;
+                position: fixed;
+                top: 46px;
+                right: 42px;
+                z-index: 5;
+              }
+              .arrow-up-border {
+                width: 0; 
+                height: 0; 
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid black;
+                position: fixed;
+                top: 45px;
+                right: 42px;
+              }
+              .pop{
+                  right: -200px
+              }
 
 
 @media (min-width: $breakpoint-tablet){
@@ -65,15 +125,15 @@
         font-size: $tablet-font-size;
     }
     .slide{
-        width: calc(100vw - 100px);
-        margin-left: 100px;
+        width: calc(100vw - 120px);
+        margin-left: 120px;
     }
     .menu{
-        width: 100px;
-        padding-top:10px;
+        width: 120px;
+
     }
     .sld{
-        left: -102px;
+        left: -122px;
     }
     .nav-logo {
         width: 40px;
@@ -89,15 +149,15 @@
         font-size: $desktop-font-size;
     }
     .slide{
-        width: calc(100vw - 250px);
-        margin-left: 250px;
+        width: calc(100vw - 295px);
+        margin-left: 275px;
     }
     .menu{
-        width: 250px;
-        padding-top:10px;
+        width: 275px;
+
     }
     .sld{
-        left: -252px;
+        left: -277px;
     }
     .nav-logo {
         width: 50px;

@@ -1,17 +1,18 @@
 @import '../../variables';
+
 //save button
 .entry-save-button-cont{
     width: 95%;
     display:flex;
     justify-content: flex-end;
     margin: 0 auto;
-
 }
 .entry-save-button{
     margin:15px 0px 0px 0px;
     font-size: $mobile-font-size;
     border: 2px solid black;
     transition-duration: 0.5s;
+    background-color: white;
 }
 .entry-save-button:hover {
     background-color: black;
@@ -26,6 +27,7 @@
 }
 .title-input{
     height: 40px;
+    width: 100%;
     @include title-input;
     font-size: 12px;
 }
@@ -38,6 +40,7 @@
     border: none;
     margin-top:15px;
     font-size:$mobile-font-size;
+    line-height: 26.4px;
 }
 .entry-content:focus{
     outline: none; 
@@ -78,8 +81,9 @@
 
 @media (min-width: $breakpoint-tablet){
     .new-entry{
-        width: 550px;
+        width: 525px;
         height: 685px;
+        margin: 80px auto;
     }
     .title-input{
         height: 50px;
@@ -97,10 +101,10 @@
         top: 19vh;
     }
     .entry-save-button{
-        font-size: $tablet-font-size;
+        font-size: 12px;
     }
     .entry-content{
-        height: 600px;
+        height: 500px;
         font-size:$tablet-font-size;
     }
 }
@@ -109,6 +113,8 @@
     .new-entry{
         width: 1100px;
         height: 1400px;
+        margin: 100px auto;
+
     }
     .title-input{
         height: 70px;

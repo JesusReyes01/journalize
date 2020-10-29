@@ -1,5 +1,6 @@
-select ae.content, au.email, ae.author_id, ae.entry_id, ae.img 
-from app_entry ae
+SELECT ae.title, ae.date, ae.img, au.email, ae.entry_id
+FROM app_entry ae
 JOIN app_user au
-on ae.author_id = au.user_id
-where ae.author_id = $1;
+ON ae.author_id = au.user_id
+WHERE ae.author_id = $1
+ORDER BY ae.date DESC;

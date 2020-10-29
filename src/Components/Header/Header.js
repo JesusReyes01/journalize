@@ -1,20 +1,24 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {clearUser} from '../../Redux/authReducer'
 import './Header.scss';
 import Menu from '../Menu/Menu';
 import logo from '../../assets/journal-logo.png'
-import {menuToggle} from '../../Redux/menuReducer'
-
-
+import downArrow from '../../assets/down-arrow.png'
 
 function Header(props) {
     const [state, sState] = useState({
-        menu: false
+        menu: false,
+        popup: false
     })
 
     const slide = () => {
-        sState({menu: !state.menu})
-        props.menuToggle()
+        sState({...state, menu: !state.menu})
+        // props.menuToggle()
+    }
+    const popup = () => {
+        sState({...state, popup: !state.popup})
     }
 
     return(
@@ -26,7 +30,18 @@ function Header(props) {
                         <img className='nav-logo' src={logo} alt='Logo'/>
                         <p>Journalize</p>
                     </div>
-                    <div className='header-drop'>{props.authReducer.user.first_name?props.authReducer.user.first_name:'Please Login'}</div>
+                    <div className='header-drop' onClick={popup}> 
+                        {props.authReducer.user.first_name}
+                        <img className='popup-icon' src={downArrow} alt='down-arrow'/>
+                    </div>
+                    <div class={state.popup?'arrow-up':'arrow-up pop'}></div>
+                    <div class={state.popup?'arrow-up-border':'arrow-up-border pop'}></div>
+                    <div className={state.popup?'popup':'popup pop'}>
+                        <div className='inside-popup'>Account</div>
+                        <div className='inside-popup'>Dark Mode</div>
+                        <Link className='inside-popup' to='/' onClick={props.clearUser}>Logout</Link>
+
+                    </div>
                 </nav>
                 <div>
                     <Menu className={state.menu?'menu sld':'menu'}/>
@@ -38,4 +53,6 @@ function Header(props) {
 
 }
 const mapStateToProps = reduxState => reduxState;
-export default connect(mapStateToProps, {menuToggle})(Header);
+export default connect(mapStateToProps, {clearUser})(Header);
+
+

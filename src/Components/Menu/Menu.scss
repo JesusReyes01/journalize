@@ -2,59 +2,171 @@
 
 
 .menu-user{
-    @include menu;
+    margin: 5px auto;
     width: 30px;
     font-size: $mobile-font-size;
-
 }
-.menu-home{
+.menu-view-all{
+    text-decoration: none;
+    color:black;
+    height: 35px;
+    width: 100%;
+    display:flex;
+    align-items:center;
+    border-top: 1px solid black;
+    font-size: 8px;
+}
+.menu-view-all-icon{
     @include menu;
-    width: 30px;
+    width: 15px;
 }
 .menu-new-entry{
-    @include menu;
-    width: 30px;
+    text-decoration: none;
+    color:black;
+    height: 35px;
+    width: 100%;
+    display:flex;
+
+    align-items:center;
+    border-top: 2px solid black;
+    font-size: 8px;
+
+    
 }
+.menu-new-entry-icon{
+    @include menu;
+    width: 15px;
+    margin-left: 0px;
+
+}
+
+.menu-link{
+    text-decoration: none;
+    color:black;
+    height: 35px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    border-bottom: 1px solid black;
+}
+.menu-link:hover{
+    cursor: pointer;
+}
+.entry-flex{
+    width: 100%;
+    height: calc(100% - 250px);
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow: scroll;
+    border-top: 1px solid black;
+}
+.menu-entry{
+    width: 88%;
+    height: 100%;
+    display: flex;    
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $primary-font-family;
+
+}
+.menu-entry span{
+    width: 100%;
+    text-align: left;
+    font-size: 8px;
+    // text-decoration: none;
+}
+
 .logout-button{
     @include menu;
     position: absolute;
     width: 30px;
     bottom: 20px;
-    left: 10px;
+    left: 25px;
 }
 
 @media (min-width: $breakpoint-tablet){
     .menu-user{
-        width: 50px;
+        width: 120px;
+        height: 40px;
         font-size: $tablet-font-size;
     }
-    .menu-home{
-        width: 50px;
+    .menu-view-all{
+        height: 50px;
+        font-size: $tablet-font-size;
+    }
+    .menu-view-all-icon{
+        width: 25px;
     }
     .menu-new-entry{
-        width: 50px;
+        height: 50px;
+        font-size: $tablet-font-size;
+    }
+    .menu-new-entry-icon{
+        @include menu;
+        width: 25px;
+    
     }
     .logout-button{
         width: 50px;
         bottom: 20px;
         left: 25px;
     }
+    .menu-link{
+        height: 50px;
+    }
+    .entry-flex{
+        height: calc(100vh - 170px)
+    }
+    .menu-entry{
+        height: 50px;
+    }
+    .menu-entry span{
+        font-size: $tablet-font-size;
+    }
 }
 
+
+
 @media (min-width: $breakpoint-desktop){
-    .menu-user{
-        width: 70px;
-        font-size: $desktop-font-size;
-    }
-    .menu-home{
-        width: 70px;
-    }
-    .menu-new-entry{
-        width: 70px;
-    }
-    .logout-button{
-        width: 70px;
-        bottom: 20px;
-        left: 90px;
-    }
+.menu-user{
+    width: 150px;
+    height: 50px;
+    font-size: $desktop-font-size;
+}
+.menu-view-all{
+    height: 60px;
+    font-size: $desktop-font-size;
+}
+.menu-view-all-icon{
+    width: 35px;
+}
+.menu-new-entry{
+    height: 60px;
+    font-size: $desktop-font-size;
+}
+.menu-new-entry-icon{
+    @include menu;
+    width: 35px;
+}
+.logout-button{
+    width: 60px;
+    bottom: 20px;
+    left: 25px;
+}
+.menu-link{
+    height: 60px;
+}
+.entry-flex{
+
+    height: calc(100vh - 200px);
+}
+.menu-entry{
+    height: 60px;
+}
+.menu-entry span{
+    font-size: $desktop-font-size;
+}
 }

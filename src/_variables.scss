@@ -4,7 +4,7 @@ $primary-text-color: rgb(0, 0, 0);
 $primary-input-color: rgb(240, 240, 240);
 $mobile-font-size: 10px;
 $tablet-font-size: 16px;
-$desktop-font-size: 22px;
+$desktop-font-size: 20px;
 $primary-font-size: 14px;
 $primary-font-family: monospace;
 
@@ -57,14 +57,14 @@ $breakpoint-desktop: 901px;
 @mixin menu{
     display:flex;
     justify-content: center;
-    margin: 20px auto;
+    margin: 10px 0px 10px 0px;
     font-family: $primary-font-family;
 }
 
 //Header Mixin
 @mixin header{
     font-family: $primary-font-family;
-    width:90px;
+    width: 90px;
     height: 100%;
     display:flex;
     align-items: center;
