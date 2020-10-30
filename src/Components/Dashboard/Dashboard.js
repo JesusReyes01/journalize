@@ -9,28 +9,25 @@ function Dashboard(props) {
         search: '',
         entries: []
     })
-    useEffect(()=> {
+    useEffect(() => {
         if(!props.authReducer.user.email){
             props.history.push('/')
         }
         else{
             getEntries();
         }
-    })
+    },[state.search]);
     const getEntries = () => {
-        axios.get('/api/entries')
+        const {search} = state;
+        axios.get(`/api/entries?search=${search}`)
         .then(res => sState({...state, entries: res.data}))
-        .catch(err => console.log('get entry request failed'))
-        // const {myPost, search} = this.state;
-        // axios.get(`/api/posts/${myPost}?search=${search}`)
-        // .then(res => this.setState({posts: res.data, search: ''}))
-        // .catch(err => console.log(err))
+        .catch(err => console.log(err))
     }
     const handleSearch = (search) => {
-        sState({search})
+        sState({...state, search: search})
     }
     const resetSearch = () => {
-        sState({search: ''})
+        sState({...state, search: ''})
         getEntries();
     }
     let mappedEntries = state.entries.map( el => {
@@ -53,7 +50,8 @@ function Dashboard(props) {
                         </div>
                         <div className='search-flex'>
                             <input
-                                onChange={ e =>  handleSearch(e)}
+                                value={state.search}
+                                onChange={(e) =>  handleSearch(e.target.value)}
                                 placeholder='Search by Title'
                                 />
                             <button onClick={getEntries} className='search-button'>Search</button>

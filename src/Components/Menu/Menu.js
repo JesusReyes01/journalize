@@ -14,7 +14,7 @@ function Menu(props) {
         axios.get('/api/entries')
         .then(res => sState({...state, entries: res.data}))
         .catch(err => console.log('get entry request failed'))
-    })
+    },[])
 
     let mappedEntries = state.entries.map( el => {
         return (
@@ -28,7 +28,6 @@ function Menu(props) {
 
     return (
         <div {...props}>
-            {/* <img className='menu-logo' src={logo} alt='Logo'/> */}
             <div className='menu-user'>{props.authReducer.user.first_name}'s Journal</div>
             <Link className='menu-new-entry' to='/new'><img className='menu-new-entry-icon' src={newEntryLogo} alt='New Entry' /> New Entry</Link>
             <Link className='menu-view-all' to='/dashboard'><img className='menu-view-all-icon' src={viewAll} alt='home' />View All Entries</Link>

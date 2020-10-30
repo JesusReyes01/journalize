@@ -4,6 +4,7 @@ import Auth from './Components/Auth/Auth';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Entry from './Components/Entry/Entry';
 import NewEntry from './Components/NewEntry/NewEntry';
+import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
 
 export default (
     <Switch>
@@ -11,5 +12,6 @@ export default (
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/entry/:entryId' component={Entry} />
         <Route path='/new' component={NewEntry}/>
+        <Route path='/forgotpassword' component={ForgotPassword}/>
     </Switch>
 )

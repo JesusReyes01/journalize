@@ -101,15 +101,15 @@
     }
     .menu-view-all-icon{
         width: 25px;
+        margin-left: 5px;
     }
     .menu-new-entry{
         height: 50px;
         font-size: $tablet-font-size;
     }
     .menu-new-entry-icon{
-        @include menu;
         width: 25px;
-    
+        margin-left: 5px;
     }
     .logout-button{
         width: 50px;
@@ -145,14 +145,15 @@
 }
 .menu-view-all-icon{
     width: 35px;
+    margin-left: 5px;
 }
 .menu-new-entry{
     height: 60px;
     font-size: $desktop-font-size;
 }
 .menu-new-entry-icon{
-    @include menu;
     width: 35px;
+    margin-left: 5px;
 }
 .logout-button{
     width: 60px;

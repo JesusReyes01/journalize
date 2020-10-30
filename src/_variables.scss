@@ -5,11 +5,17 @@ $primary-input-color: rgb(240, 240, 240);
 $mobile-font-size: 10px;
 $tablet-font-size: 16px;
 $desktop-font-size: 20px;
-$primary-font-size: 14px;
+$secondary-font-size: 14px;
 $primary-font-family: monospace;
+
 
 $breakpoint-tablet: 768px;
 $breakpoint-desktop: 901px;
+//Overall Mixin
+@mixin link{
+    text-decoration: none;
+    color: black;
+}
 
 //Auth Mixin
 @mixin flex-container {
@@ -24,7 +30,6 @@ $breakpoint-desktop: 901px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-decoration: none;
     font-family: $primary-font-family;
 }
 @mixin auth-input{
@@ -43,13 +48,13 @@ $breakpoint-desktop: 901px;
     background-color: #e7e7e7;
     border: none;
     color: rgb(197, 194, 194);
-    font-family: $primary-font-family;
+
 }
 @mixin auth-button-change{
     background-color: #202020;
     border: none;
     color: rgb(197, 194, 194);
-    font-family: $primary-font-family;
+
 }
 
 

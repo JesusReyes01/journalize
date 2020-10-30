@@ -1,9 +1,10 @@
 import logo from '../../assets/journal-logo.png'
 import React,{useState} from 'react';
 import axios from 'axios';
-import '../Auth/Auth.scss'
+import './Auth.scss'
 import {connect} from 'react-redux'
 import {getUser} from '../../Redux/authReducer'
+import {Link} from 'react-router-dom';
 
 
 function Auth(props) {
@@ -20,28 +21,21 @@ function Auth(props) {
 
 
     const handleInput = (event) => {
-        // console.log(event.target)//
         sState({...state, [event.target.name]: event.target.value})
     }  
-    // const handleToggle = (event) => {
-    //     console.log(event.target)
-    //     sState({...state, [event.target.name]: !state.event.target.name})
-    // }  
     const handleToggle = () => {
         sState({...state, registerView: !state.registerView})
     }
 
     const handleLogin = () => {
         const {email, password} = state
-
         axios
-        .post('/api/login', {email, password})
-        .then(res => {
-            props.getUser(res.data)
-            props.history.push('/new')
-        })
-        .catch(err => console.log(err))
-    }
+            .post('/api/login', {email, password})
+            .then(res => {
+                props.getUser(res.data)
+                props.history.push('/new')
+            })
+            .catch(err => console.log(err))}
 
     const handleRegister = () => {
         const {firstName, lastName, email, password, verPassword} = state;
@@ -49,26 +43,14 @@ function Auth(props) {
             axios.post('/api/register', {firstName, lastName, email,  password})
             .then(res => {
                 props.getUser(res.data);
-                props.history.push('/new');
-                
-            })
-            .catch(err => console.log(err));
-        }
+                props.history.push('/new');})
+            .catch(err => console.log(err));}
         else{
-            alert(`Passwords don't match`)
-        }
-    }
+            alert(`Passwords don't match`)}}
+
     return (    
-        <div className ='auth-body'>
-            <header className='header'>
-                {/* {state.registerView
-                ?<span 
-                    name='registerView'
-                    onClick={(e) =>  handleToggle(e)}>LOG IN</span>
-                :<div 
-                    name='password'
-                    onClick={(e) => handleToggle(e)}>CREATE ACCOUNT</div>
-                } */}
+        <div>
+            <header className='auth-header'>
                  {state.registerView
                 ?<span 
                     name='registerView'
@@ -79,7 +61,7 @@ function Auth(props) {
                 }
             </header>
             
-            <section className='auth-box'>
+            <form className='auth-box'>
                 <img className='logo' src={logo} alt='Logo'/>
                 
                 {state.registerView
@@ -92,14 +74,14 @@ function Auth(props) {
                     ?
                     <>
                         <input
-                            className='input'
+                            className='auth-input'
                             value={state.firstName}
                             name='firstName'
                             placeholder='First Name'
                             onChange={(e) =>  handleInput(e)}
                         />
                         <input
-                            className='input'
+                            className='auth-input'
                             value={state.lastName}
                             name='lastName'
                             placeholder='Last Name'
@@ -110,14 +92,14 @@ function Auth(props) {
                     }
 
                     <input
-                        className='input'
+                        className='auth-input'
                         value={state.email}
                         name='email'
                         placeholder='Email Address'
                         onChange={(e) =>  handleInput(e)}/>
                     
                     <input 
-                        className='input'
+                        className='auth-input'
                         type='password'
                         value={state.password}
                         name='password'
@@ -128,32 +110,30 @@ function Auth(props) {
                 {state.registerView
                     ? (<>
                         <input 
-                            className='input'
+                            className='auth-input'
                             type='password'
                             value={state.verPassword}
                             name='verPassword'
                             placeholder='Verify Password'
                             onChange={(e) => handleInput(e)}/>
                         <button 
-                            className={state.firstName && state.lastName && state.email && state.password && state.verPassword?'button-change':'button'}
+                            className={state.firstName && state.lastName && state.email && state.password && state.verPassword
+                                ?'auth-button change':'auth-button'}
                             onClick={handleRegister}
                                 >CREATE ACCOUNT</button>
                        </>)
                     : (<div>
                         <button 
-                            className={state.email && state.password?'button-change':'button'}
+                            className={state.email && state.password?'auth-button change':'auth-button'}
                             onClick={handleLogin}
                                 >LOG IN</button>
                         
                        </div>)
                 }
-                <div className='link'>
-                    <span 
-                    name='forgotLoginView'
-                    onClick={handleToggle}>CAN'T LOG IN?</span>
-                </div>
-
-            </section>
+                <Link className='forgot-pw-link' to='/forgotpassword'> 
+                    <span>CAN'T LOG IN?</span>
+                </Link>
+            </form>
         </div>
     )
 }
