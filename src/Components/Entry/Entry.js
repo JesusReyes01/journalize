@@ -20,7 +20,7 @@ function Entry(props) {
         else{
             getSingleEntry();
         }
-    })
+    },[])
     
     //axios request
     const getSingleEntry = () => {
@@ -31,7 +31,7 @@ function Entry(props) {
             .then(res => {
                 sState({...state,
                         title: res.data.title,
-                        date: [res.data.date],
+                        date: res.data.date,
                         img: res.data.img,
                         content: res.data.content })})
         .catch(err => console.log(err.request));
@@ -44,11 +44,14 @@ function Entry(props) {
             .catch(err => console.log(err))
      }
      const handleUpdate = () => {
-        const {title,date, img, content} = state;
+        const {title, date, img, content} = state;
         const {entryId} = props.match.params;
-        let fmtDate = date[0]
+        let fmtDate = date[0].split('/')
+        fmtDate.unshift(fmtDate.pop())
+        let fnlDate = new Date(fmtDate)
+        console.log(fnlDate)
         axios
-            .put(`/api/updateEntry/${entryId}`, {title, fmtDate, img, content})
+            .put(`/api/updateEntry/${entryId}`, {title, fnlDate, img, content})
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
     }
@@ -65,8 +68,8 @@ function Entry(props) {
         console.log(state.calToggle)
         sState({...state, calToggle: !state.calToggle})
     }
-    let displayDate  = state.date[0]  
-
+    let displayDate = state.date[0]
+ 
     return (
         <div>
                 <div className='up-new-entry'>
@@ -116,41 +119,3 @@ function Entry(props) {
 const mapStateToProps = reduxState => reduxState;
 export default connect(mapStateToProps)(Entry);
 
-
-
-//      }
-
-//      handleDelete = () => {
-//         axios.delete(`/api/posts/${this.state.post.post_id}`)
-//         .then(() => this.props.history.push('/dashboard'))
-//         .catch(err => console.log(err))
-//      }
-
-//     render(){
-    
-//         const {title, img, content, username, profile_picture, author_id} = this.state.post;
-
-//         return(
-//             <div className='post-flex'>
-//                 <div className='title-header'>
-//                     <h1 className='title'>{title}</h1>
-//                     <div className="author-flex">
-//                         <p>by {username}</p>
-//                         <img src={profile_picture} alt='User-pic' />
-//                     </div>
-//                 </div>
-//                 <div className='post'>
-//                     <img src={img} alt='post-img' />
-//                     <p>{content}</p>
-//                 </div>
-//                 {this.props.user.user_id === author_id
-//                 ?
-//                 (<button onClick={this.handleDelete}>Delete Post</button>)
-//                 :
-//                 (<button>Not User: Cannot Delete</button>)}
-//          </div>
-//         )
-//     }
-// }
-// const mapStateToProps = reduxState => reduxState;
-// export default connect(mapStateToProps)(Post);

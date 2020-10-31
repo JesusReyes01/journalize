@@ -5,7 +5,6 @@
   "main": "server/index.js",
   "proxy": "http://localhost:4000",
   "dependencies": {
-    "@ckeditor/ckeditor5-build-balloon-block": "^23.0.0",
     "@ckeditor/ckeditor5-build-classic": "^23.0.0",
     "@ckeditor/ckeditor5-react": "^2.1.0",
     "@testing-library/jest-dom": "^4.2.4",
@@ -49,5 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {}
 }

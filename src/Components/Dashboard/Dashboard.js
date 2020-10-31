@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
-import {Link} from 'react-router-dom';
+import {Link,} from 'react-router-dom';
 import './Dashboard.scss'
 
 function Dashboard(props) {
@@ -16,13 +16,15 @@ function Dashboard(props) {
         else{
             getEntries();
         }
-    },[state.search]);
+    },[]);
+
     const getEntries = () => {
         const {search} = state;
         axios.get(`/api/entries?search=${search}`)
         .then(res => sState({...state, entries: res.data}))
         .catch(err => console.log(err))
     }
+
     const handleSearch = (search) => {
         sState({...state, search: search})
     }
@@ -30,23 +32,30 @@ function Dashboard(props) {
         sState({...state, search: ''})
         getEntries();
     }
-    let mappedEntries = state.entries.map( el => {
+    
+    let mappedEntries = state.entries
+        .map( el => {
         return (
             <Link className='entry-cmp' to={`/entry/${el.entry_id}`} key={el.entry_id}>
                         <div className='entry-flx'>
                             <span className='entry-ttl'>{el.title}</span>
                             <span className='entry-cntnt'>{el.content}</span>
                         </div>
-                        <span className='entry-dt'>{el.date}</span>
+                        <span className='entry-dt'>{el.date[0]}</span>
             </Link>)})
 
         return(
             <div className='dashboard'>
                 <header className='dash-header'>
                     <div className='dash-header-cont'>
-                        <div className='header-ttl'>
-                            <span className='title-name'>{props.authReducer.user.first_name}'s Journal</span>
-                            <span className='entry-count'>{state.entries.length} total entries</span>
+                        <div className='new-entry-cont'>
+                            <div className='header-ttl'>
+                                <span className='title-name'>{props.authReducer.user.first_name}'s Journal</span>
+                                <span className='entry-count'>{state.entries.length} total entries</span>
+                            </div>
+                            <Link to='/new' className='new-entry-btn'>
+                                &#8853; New Entry
+                            </Link>
                         </div>
                         <div className='search-flex'>
                             <input

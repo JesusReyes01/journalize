@@ -78,7 +78,8 @@
     width: 100%;
     text-align: left;
     font-size: 8px;
-    // text-decoration: none;
+    overflow:hidden;
+    white-space: nowrap;
 }
 
 .logout-button{

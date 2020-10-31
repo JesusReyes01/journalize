@@ -42,6 +42,7 @@
     margin-top: 30px;
     @include auth-button;
     font-size: $tablet-font-size;
+    font-family : inherit;
 }
 // .button-change{
 //     width: 71.5vw;

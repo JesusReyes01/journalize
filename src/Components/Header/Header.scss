@@ -86,8 +86,7 @@
                 text-align: left;
                 display:flex;
                 align-items: center;
-                text-decoration: none;
-                color:black;
+                @include link;
             }
             .inside-popup:hover{
                 cursor: pointer;

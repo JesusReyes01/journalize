@@ -2,12 +2,11 @@
 
 .entry-cmp{
     width: 100%;
-    height: 12%;
+    height: 10%;
     display:flex;
     justify-content: center;
     border-bottom: 1px solid lightgray;
-    text-decoration: none;
-    color:black;
+    @include link;
     padding: 1% 0 1% 0;
 }
 .entry-flx{
@@ -59,7 +58,7 @@
 .dash-header{
 
     width: 60vw;
-    height: 12.5%;
+    height: 10em;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -69,6 +68,10 @@
 }
 .dash-header-cont{
     width: 60vw;
+}
+.new-entry-cont{
+    display:flex;
+    align-items: center;
 }
 .header-ttl{
     width:100%;
@@ -84,6 +87,19 @@
 .entry-count{
     font-size: 8px;
 }
+.new-entry-btn{
+    height: 80%;
+    width: 180px;
+    background-color: white;
+    border: 1px solid black;
+    transition-duration: 0.5s;
+    font-size: $mobile-font-size;
+    @include link;
+}
+.new-entry-btn:hover{
+    background-color: black;
+    color: white;
+}
 .search-flex{
 
     width: 100%;
@@ -94,12 +110,14 @@
 .search-flex input{
     width: 100%;
     font-size: $mobile-font-size;
+    font-family : inherit;
 }
 .search-flex button{
     font-size: $mobile-font-size;
     border: 1px solid black;
     transition-duration: 0.5s;
     background-color: white;
+    font-family : inherit;
 }
 .search-flex button:hover {
     background-color: black;
@@ -119,8 +137,7 @@
     display:flex;
     justify-content: center;
     border-bottom: 1px solid black;
-    text-decoration: none;
-    color:black;
+    @include link;
     padding-bottom: 1%;
 }
 .header-entry{
@@ -133,6 +150,7 @@
     height: 100%;
     width: 30%;
     display:flex;
+    justify-content:center;
     align-items: flex-end;
 }
 
@@ -143,12 +161,9 @@
     }
 }
 @media (min-width: $breakpoint-desktop){
-    .entry-cmp{
-        width: 100%;
-    }
     .dashboard{
-        margin: 100px auto;
-        height: calc(100vh - 100px);
+        margin: 60px auto;
+        height: calc(100vh - 60px);
         font-size: $desktop-font-size;
     }
     .dash-header{
@@ -164,6 +179,9 @@
     .entry-count{
         font-size: $tablet-font-size;
     }
+    .new-entry-btn{
+        font-size: $desktop-font-size;
+    }
     .search-flex{
         margin: 1% auto;
     }
@@ -177,6 +195,7 @@
         width: 40vw;
         margin-top: 1%;
     }  
+    
 
 
 }

@@ -4,7 +4,7 @@ const massive = require('massive');
 const session = require('express-session');
 const authCtrl = require('./authController')
 const entryCtrl = require('./entryController')
-const nodeMailerCtrl = require('./nodeMailerController')
+// const nodeMailerCtrl = require('./nodeMailerController')
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express();
@@ -40,7 +40,7 @@ app.post('/api/entries/create', entryCtrl.createEntry)
 app.put('/api/updateEntry/:id', entryCtrl.updateEntry)
 app.delete('/api/entries/:id', entryCtrl.deleteEntry)
 //NodeMailer
-app.post('/api/email', nodeMailerCtrl.email);
+// app.post('/api/email', nodeMailerCtrl.email);
 
 
 

@@ -4,11 +4,11 @@ import {connect} from 'react-redux'
 import './NewEntry.scss'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-
+// new Date().toLocaleString().split(",")
 function NewEntry(props) {
     const [state, sState] = useState({
         title: '',
-        date: new Date().toLocaleString().split(","),
+        date: new Date(),
         img: '',
         content: '',
         calToggle: false
@@ -24,23 +24,25 @@ function NewEntry(props) {
         sState({...state, [event.target.name]: event.target.value})
     } 
     const calInput = (date) => {
-        sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
+        sState({...state, date: date, calToggle: false}) 
+        // sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
     }
 
     const handleSubmit = () => {
         const {title,date, img, content} = state;
-        let fmtDate = date[0]
+        // let fmtDate = date[0]
+        // let date = date.toLocaleString().split(",")
         axios
-            .post('/api/entries/create', {title, fmtDate, img, content})
+            .post('/api/entries/create', {title, date, img, content})
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
     }
     //Calender Display
     const calToggle = () => {
-        console.log(state.calToggle)
         sState({...state, calToggle: !state.calToggle})
     }
-    let displayDate  = state.date[0]   
+    // let displayDate  = state.date[0]   
+    let displayDate  = state.date.toLocaleString().split(",")
 
     return (
               <div>
@@ -61,7 +63,7 @@ function NewEntry(props) {
                         <div
                             className='date-toggle'
                             onClick={calToggle}
-                                >{displayDate}</div>   
+                                >{displayDate[0]}</div>   
                         {state.calToggle?
                         <div className = 'calender'>
                             <Calendar
