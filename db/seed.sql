@@ -15,6 +15,12 @@ create table if not exists app_entry (
     author_id int references app_user(user_id)
 );
 
+create table if not exists app_dark_mode (
+    user_id int references app_user(user_id),
+    dark_mode boolean
+    
+);
+
 create table if not exists feeling(
     feeling_id serial primary key,
     img text

@@ -1,4 +1,5 @@
-@import '../../variables';
+@import './variables';
+
 .nav-header{
     width: 100vw;
     height: 30px;
@@ -9,11 +10,12 @@
     font-family: $primary-font-family;
     position:fixed;
     top:0px;
-    background-color:white;
+    background-color:$background-color;
+    color: $text-color;
 }
 .slide{
     width: calc(100vw - 60px);
-    margin-left: 61px;
+    margin-left: 60px;
 }
 .header-comp{
     width: calc(100% - 20px);
@@ -34,8 +36,13 @@
     left: 0px;
     border-right: 2px solid;
     transition: .3s;
-    background-color: white;
+    color: $text-color;
+    background-color: $background-color;
 }
+.menu a{
+    color: $text-color;
+}
+
 .sld{
     left: -65px;
 }
@@ -69,7 +76,7 @@
             .popup{
                 width: 160px;
                 height: 150px;
-                background-color: white;
+                background-color: $background-color;
                 position: fixed;
                 top: 50px;
                 right: 30px;
@@ -94,12 +101,13 @@
             .arrow-up {
                 width: 0; 
                 height: 0; 
+
                 border-left: 5px solid transparent;
                 border-right: 5px solid transparent;
-                border-bottom: 5px solid white;
+                border-bottom: 5px solid $background-color;
                 position: fixed;
                 top: 46px;
-                right: 42px;
+                right: 40px;
                 z-index: 5;
               }
               .arrow-up-border {
@@ -110,7 +118,7 @@
                 border-bottom: 5px solid black;
                 position: fixed;
                 top: 45px;
-                right: 42px;
+                right: 40px;
               }
               .pop{
                   right: -200px
@@ -146,11 +154,11 @@
         height: 60px;
     }
     .header-comp{
-        width: calc(100% - 60px);
+        width: calc(100% - 97px);
         font-size: $desktop-font-size;
     }
     .slide{
-        width: calc(100vw - 295px);
+        width: calc(100vw - 275px);
         margin-left: 275px;
     }
     .menu{

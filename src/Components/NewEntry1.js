@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-// import BalloonBlockEditor from '@ckeditor/ckeditor5-build-balloon-block';
 import axios from 'axios'
 import {connect} from 'react-redux'
-import './NewEntry.scss'
+import '../Style/NewEntry.scss'
 
 function NewEntry(props) {
     const [state, sState] = useState({

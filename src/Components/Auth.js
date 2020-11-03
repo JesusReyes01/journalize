@@ -1,10 +1,11 @@
-import logo from '../../assets/journal-logo.png'
 import React,{useState} from 'react';
 import axios from 'axios';
-import '../Auth/Auth.scss'
+import '../Style/Auth.scss'
 import {connect} from 'react-redux'
-import {getUser} from '../../Redux/authReducer'
+import {getUser} from '../Redux/authReducer'
+import {getDarkMode} from '../Redux/darkModeReducer'
 import {Link} from 'react-router-dom';
+import logo from '../assets/journal-logo.png'
 
 
 function Auth(props) {
@@ -33,9 +34,13 @@ function Auth(props) {
         .post('/api/login', {email, password})
         .then(res => {
             props.getUser(res.data)
+            props.getDarkMode()
             props.history.push('/new')
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            alert(`Double check your email and password, and try again.`)
+            console.log(err)
+        })
     }
     const handleRegister = () => {
         const {firstName, lastName, email, password, verPassword} = state;
@@ -44,12 +49,17 @@ function Auth(props) {
             .then(res => {
                 props.getUser(res.data);
                 props.history.push('/new');
-                
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                alert(`Email is already registered.`)
+                console.log(err)
+            });
+        }
+        else if(firstName || lastName || email || password || verPassword === false){
+            alert('Please enter missing information.')
         }
         else{
-            alert(`Passwords don't match`)
+            alert(`Passwords do not match. \n Please try again.`)
         }
     }
 
@@ -122,7 +132,7 @@ function Auth(props) {
                             placeholder='Verify Password'
                             onChange={(e) => handleInput(e)}/>
                         <button 
-                            className={state.firstName && state.lastName && state.email && state.password && state.verPassword?'button-change':'button'}
+                            className={state.firstName && state.lastName && state.email && state.password && state.verPassword?'auth-button change':'auth-button'}
                             onClick={handleRegister}
                                 >CREATE ACCOUNT</button>
                        </>)
@@ -143,4 +153,4 @@ function Auth(props) {
 }
 
 
-export default connect(null, {getUser})(Auth);
+export default connect(null, {getUser,getDarkMode})(Auth);

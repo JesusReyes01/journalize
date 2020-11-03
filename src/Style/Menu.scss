@@ -1,6 +1,4 @@
-@import '../../variables';
-
-
+@import './variables';
 .menu-user{
     margin: 2.5px auto;
     width: 50px;
@@ -42,14 +40,13 @@
 }
 
 .menu-link{
-    text-decoration: none;
-    color:black;
     height: 35px;
     width: 100%;
     display:flex;
     justify-content: center;
     align-items:center;
     border-bottom: 1px solid black;
+    text-decoration: none;
 }
 .menu-link:hover{
     cursor: pointer;
@@ -165,7 +162,7 @@
     height: 60px;
 }
 .entry-flex{
-    height: calc(100vh - 200px);
+    height: calc(100vh - 169px);
 }
 .menu-entry{
     height: 60px;

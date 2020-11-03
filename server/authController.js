@@ -11,6 +11,7 @@ module.exports = {
         let salt = bcrypt.genSaltSync(10)
         let hash = bcrypt.hashSync(password, salt);
         const newUser =  await db.register_user({firstName, lastName, email, hash})
+        await db.init_dark_mode(newUser[0].user_id, 'false')
         req.session.user = newUser[0]
         res.status(201).send(req.session.user);
     },
@@ -27,7 +28,6 @@ module.exports = {
         }
         delete foundUser[0].password;
         req.session.user = foundUser[0]
-        console.log('login complete')
         res.status(202).send(req.session.user)
     },
     logout: (req, res) => {

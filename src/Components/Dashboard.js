@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {Link,} from 'react-router-dom';
-import './Dashboard.scss'
+import '../Style/Dashboard.scss'
 
 function Dashboard(props) {
     const [state, sState] = useState({
@@ -30,7 +30,7 @@ function Dashboard(props) {
     }
     const resetSearch = () => {
         sState({...state, search: ''})
-        getEntries();
+        // getEntries()
     }
     
     let mappedEntries = state.entries

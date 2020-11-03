@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
-import './NewEntry.scss'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-// new Date().toLocaleString().split(",")
+import '../Style/NewEntry.scss'
+
 function NewEntry(props) {
     const [state, sState] = useState({
         title: '',

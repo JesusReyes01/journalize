@@ -2,9 +2,10 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const authCtrl = require('./authController')
-const entryCtrl = require('./entryController')
-// const nodeMailerCtrl = require('./nodeMailerController')
+const authCtrl = require('./authController');
+const entryCtrl = require('./entryController');
+const darkModeCtrl = require('./darkModeController');
+const nodeMailerCtrl = require('./nodeMailerController');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
 
 const app = express();
@@ -39,8 +40,11 @@ app.get('/api/entries/single/:id', entryCtrl.getSingleEntry)
 app.post('/api/entries/create', entryCtrl.createEntry)
 app.put('/api/updateEntry/:id', entryCtrl.updateEntry)
 app.delete('/api/entries/:id', entryCtrl.deleteEntry)
+//DarkMode Endpoints
+app.get('/api/darkMode', darkModeCtrl.getDarkMode)
+app.put('/api/updateDarkMode', darkModeCtrl.updateDarkMode)
 //NodeMailer
-// app.post('/api/email', nodeMailerCtrl.email);
+app.post('/api/email', nodeMailerCtrl.email);
 
 
 

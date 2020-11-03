@@ -1,4 +1,4 @@
-@import '../../variables';
+@import './variables';
 
 //save button
 .entry-save-button-cont{
@@ -22,7 +22,7 @@
 .new-entry{
     width: 250px;
     height: 342px;
-    margin: 50px auto;
+    margin: 0px auto;
     border: 2px solid black;
 }
 .title-input{
@@ -30,9 +30,9 @@
     width: 85%;
     @include title-input;
     font-size: 12px;
-}
-.title-input:focus{
+    &:focus{
     outline: none; 
+    }
 }
 .entry-content{
     width: 90%;
@@ -41,9 +41,9 @@
     margin-top:15px;
     font-size:$mobile-font-size;
     line-height: 26.4px;
-}
-.entry-content:focus{
+    &:focus{
     outline: none; 
+    }
 }
 .title-header{
     width: 95%;
@@ -111,14 +111,14 @@
 
 @media (min-width: $breakpoint-desktop){
     .new-entry{
-        width: 1100px;
-        height: 1400px;
+        width: 850px;
+        height: 1100px;
         margin: 100px auto;
 
     }
     .title-input{
         height: 70px;
-        font-size: 30px;
+        font-size: 23px;
     }
     .date-toggle{
         font-size:$desktop-font-size;
@@ -133,7 +133,7 @@
         font-size: $desktop-font-size;
     }
     .entry-content{
-        height: 1200px;
-        font-size:$desktop-font-size;
+        height: 950px;
+        font-size:$sec-desktop-font-size;
     }
 }

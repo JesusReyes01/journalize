@@ -1,10 +1,10 @@
 import React from  'react';
 import {Switch, Route} from 'react-router-dom';
-import Auth from './Components/Auth/Auth';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Entry from './Components/Entry/Entry';
-import NewEntry from './Components/NewEntry/NewEntry';
-import ForgotPassword from './Components/ForgotPassword/ForgotPassword'
+import Auth from './Components/Auth';
+import Dashboard from './Components/Dashboard';
+import Entry from './Components/Entry';
+import NewEntry from './Components/NewEntry';
+import ForgotPassword from './Components/ForgotPassword'
 
 export default (
     <Switch>

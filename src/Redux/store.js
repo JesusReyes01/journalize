@@ -1,20 +1,20 @@
-import {createStore, combineReducers} from 'redux';
-// import promiseMiddleware from 'redux-promise-middleware';
-// import { composeWithDevTools } from 'redux-devtools-extension'
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import promiseMiddleware from 'redux-promise-middleware';
 import authReducer from './authReducer';
-import menuReducer from './menuReducer';
-import { devToolsEnhancer } from 'redux-devtools-extension';
+import darkModeReducer from './darkModeReducer';
+// import { devToolsEnhancer } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension'
 
 const rootReducer = combineReducers({
     authReducer: authReducer,
-    menuReducer: menuReducer
+    darkModeReducer: darkModeReducer
 })
+export default createStore(rootReducer, applyMiddleware(promiseMiddleware));
+// export default createStore(rootReducer, devToolsEnhancer());
 
-export default createStore(rootReducer, devToolsEnhancer());
 
 
-
-// import {createStore, combineReducers, applyMiddleware} from 'redux'
+// import {createStore, combineReducers, applyMiddleware} from 'redux';
 // import authReducer from './authReducer'
 // import menuReducer from './menuReducer'
 // import { devToolsEnhancer } from 'redux-devtools-extension';

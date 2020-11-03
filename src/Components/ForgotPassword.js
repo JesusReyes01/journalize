@@ -1,8 +1,8 @@
 import React,{useState} from 'react';
 import axios from 'axios';
-import './ForgotPassword.scss'
+import '../Style/ForgotPassword.scss'
 import {Link} from 'react-router-dom';
-import logo from '../../assets/journal-logo.png'
+import logo from '../assets/journal-logo.png'
 
 function ForgotPassword(props) {
     const [state, sState] = useState({
@@ -11,22 +11,29 @@ function ForgotPassword(props) {
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     }
-    const sendEmail = () => {
+    const sendEmail = async(e) => {
+        e.preventDefault();
         const {email} = state;
-        axios
+        console.log(email)
+        await axios
             .post('/api/email', {email})
             .then(() => {
-                props.history.push('/')
+                alert(`Reset password email has been sent.`)
                 sState({email: ''})
+                props.history.push('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                alert('Email is not on file.')
+                console.log(err)
+            })
+                
     }
     return(
         <div>
             <header className='fpw-header'>
                     <Link className='fpw-link' to='/'>&#10094; BACK</Link>
             </header>
-            <section className='fpw-box'>
+            <div className='fpw-box'>
                 <img className='logo' src={logo} alt='Logo'/>
                 <h1 >Forgot Password</h1> 
                 <span>Enter your account's email and we'll send you an email to reset the password</span>
@@ -41,7 +48,7 @@ function ForgotPassword(props) {
                         ?'fpw-button change':'fpw-button'}
                     onClick={sendEmail}
                         >SEND EMAIL</button>
-            </section>
+            </div>
         </div>
     )
 

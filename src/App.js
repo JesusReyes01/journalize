@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import Header from './Components//Header/Header'
+import Header from './Components/Header'
 import routes from './routes'
 import {withRouter} from 'react-router-dom';
 

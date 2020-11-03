@@ -2,10 +2,14 @@ $primary-box-color: rgb(255, 255, 255);
 $primary-body-color: rgb(235, 235, 235);
 $primary-text-color: rgb(0, 0, 0);
 $primary-input-color: rgb(240, 240, 240);
+$background-color: white;
+$text-color: black;
+$dm-bg-color: #15202b;
+$dm-text-color: rgb(200, 200, 200);
 $mobile-font-size: 10px;
 $tablet-font-size: 16px;
 $desktop-font-size: 20px;
-$secondary-font-size: 14px;
+$sec-desktop-font-size: 14px;
 $primary-font-family: monospace;
 
 
@@ -14,7 +18,13 @@ $breakpoint-desktop: 901px;
 //Overall Mixin
 @mixin link{
     text-decoration: none;
-    color: black;
+    color:$text-color;
+}
+@mixin dark{
+    background-color: $dm-bg-color;
+    color: $dm-text-color;
+    border-color: $dm-text-color;
+    
 }
 
 //Auth Mixin

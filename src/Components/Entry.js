@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux'
-import './Entry.scss';
+import {useLocation} from 'react-router-dom';
+import '../Style/Entry.scss';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
 
@@ -13,6 +14,7 @@ function Entry(props) {
         content: '',
         calToggle: false
     })
+    let location = useLocation();
     useEffect(()=> {
         if(!props.authReducer.user.email){
             props.history.push('/')
@@ -20,7 +22,7 @@ function Entry(props) {
         else{
             getSingleEntry();
         }
-    },[])
+    },[location])
     
     //axios request
     const getSingleEntry = () => {
@@ -49,7 +51,6 @@ function Entry(props) {
         let fmtDate = date[0].split('/')
         fmtDate.unshift(fmtDate.pop())
         let fnlDate = new Date(fmtDate)
-        console.log(fnlDate)
         axios
             .put(`/api/updateEntry/${entryId}`, {title, fnlDate, img, content})
             .then(() => props.history.push('/dashboard'))
