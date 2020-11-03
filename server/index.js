@@ -7,11 +7,19 @@ const entryCtrl = require('./entryController');
 const darkModeCtrl = require('./darkModeController');
 const nodeMailerCtrl = require('./nodeMailerController');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
+const path = require('path')
 
 const app = express();
 
-//for req.body
+//FOR req.body
 app.use(express.json());
+
+//HOSTING
+app.use(express.static(__dirname + '/../build'))
+
+app.get('*', (req,res) => {
+    res.sendFile(path.join(__dirname, '../build/index.html'))
+})
 
 //USER SESSION
 app.use(session({
