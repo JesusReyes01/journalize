@@ -25,23 +25,19 @@ function NewEntry(props) {
     } 
     const calInput = (date) => {
         sState({...state, date: date, calToggle: false}) 
-        // sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
     }
 
     const handleSubmit = () => {
         const {title,date, img, content} = state;
-        // let fmtDate = date[0]
-        // let date = date.toLocaleString().split(",")
         axios
             .post('/api/entries/create', {title, date, img, content})
             .then(() => props.history.push('/dashboard'))
             .catch(err => console.log(err))
     }
-    //Calender Display
+
     const calToggle = () => {
         sState({...state, calToggle: !state.calToggle})
     }
-    // let displayDate  = state.date[0]   
     let displayDate  = state.date.toLocaleString().split(",")
 
     return (

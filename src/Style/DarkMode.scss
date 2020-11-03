@@ -22,6 +22,7 @@ body.dark div{
 }
 body.dark input{
     @include dark;
+    
     // background-color: gray;
 }
 body.dark textarea{
@@ -43,7 +44,15 @@ body.dark div::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     // outline: 1px solid slategrey;
     border-radius: 6px;
-  }
+}
+body.dark textarea::-webkit-scrollbar {
+    width: .5em;
+}
+body.dark textarea::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    // outline: 1px solid slategrey;
+    border-radius: 6px;
+}
 .arrow-up.dark {
 border:none;
     top: 42px;

@@ -24,7 +24,6 @@ function Entry(props) {
         }
     },[location])
     
-    //axios request
     const getSingleEntry = () => {
         const {entryId} = props.match.params;
         console.log(entryId)
@@ -63,8 +62,6 @@ function Entry(props) {
         sState({...state, date: date.toLocaleString().split(","), calToggle: false}) 
     }
 
-
-    //Calender Display
     const calToggle = () => {
         console.log(state.calToggle)
         sState({...state, calToggle: !state.calToggle})
