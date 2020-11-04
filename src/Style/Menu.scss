@@ -3,32 +3,34 @@
     margin: 2.5px auto;
     width: 50px;
     height: 25px;
+    @include flex-container;
     font-size: $mobile-font-size;
 }
 .menu-view-all{
     text-decoration: none;
-    color:black;
+    color:$text-color;
     height: 35px;
     width: 100%;
     display:flex;
     align-items:center;
     border-top: 1px solid black;
-    font-size: 8px;
+    text-align: left;
+    font-size: $mobile-font-size;
 }
 .menu-view-all-icon{
     @include menu;
     width: 15px;
+    margin-left: 0px;
 }
 .menu-new-entry{
     text-decoration: none;
-    color:black;
+    color: $text-color;
     height: 35px;
     width: 100%;
     display:flex;
-
     align-items:center;
     border-top: 2px solid black;
-    font-size: 8px;
+    font-size: $mobile-font-size;
 
     
 }
@@ -47,9 +49,9 @@
     align-items:center;
     border-bottom: 1px solid black;
     text-decoration: none;
-}
-.menu-link:hover{
-    cursor: pointer;
+    &:hover{
+        cursor: pointer;
+    }
 }
 .entry-flex{
     width: 100%;
@@ -74,7 +76,7 @@
 .menu-entry span{
     width: 100%;
     text-align: left;
-    font-size: 8px;
+    font-size: $mobile-font-size;
     overflow:hidden;
     white-space: nowrap;
 }
@@ -90,7 +92,7 @@
 @media (min-width: $breakpoint-tablet){
     .menu-user{
         width: 120px;
-        height: 40px;
+        height: 45px;
         font-size: $tablet-font-size;
     }
     .menu-view-all{

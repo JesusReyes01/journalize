@@ -144,9 +144,11 @@ function Auth(props) {
                         
                        </div>)
                 }
+                {state.registerView?null:
                 <Link className='forgot-pw-link' to='/forgotpassword'> 
                     <span>CAN'T LOG IN?</span>
                 </Link>
+                }
             </section>
         </div>
     )

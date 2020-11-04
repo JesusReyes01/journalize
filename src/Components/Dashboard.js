@@ -30,7 +30,6 @@ function Dashboard(props) {
     }
     const resetSearch = () => {
         sState({...state, search: ''})
-        getEntries()
     }
     
     let mappedEntries = state.entries

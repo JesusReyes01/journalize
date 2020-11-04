@@ -14,8 +14,8 @@
     color: $text-color;
 }
 .slide{
-    width: calc(100vw - 60px);
-    margin-left: 60px;
+    width: calc(100vw - 110px);
+    margin-left: 110px;
 }
 .header-comp{
     width: calc(100% - 20px);
@@ -25,12 +25,8 @@
     align-items: center;
     font-size: $mobile-font-size;
 }
-
-.header-icon:hover{
-    cursor: pointer;
-}
 .menu{
-    width: 61px;
+    width: 110px;
     height: 100vh;
     position: fixed;
     left: 0px;
@@ -44,16 +40,18 @@
 }
 
 .sld{
-    left: -65px;
+    left: -115px;
 }
 
 .nav-logo {
     @include menu;
     width: 20px;
 } 
-
 .header-icon{
     @include header;
+    &:hover{
+        cursor: pointer;
+    }
 }
 .header-logo{
     @include header;
@@ -63,66 +61,60 @@
     @include header;
     justify-content: flex-end;
     transition: .3s;
+    &:hover{
+        cursor: pointer;
+    }
 }
-.header-drop:hover{
-    cursor: pointer;
+.popup-icon{
+    width:25px;
+    margin-top:5px
 }
-
-
-            .popup-icon{
-                width:25px;
-                margin-top:5px
-            }
-            .popup{
-                width: 160px;
-                height: 150px;
-                background-color: $background-color;
-                position: fixed;
-                top: 50px;
-                right: 30px;
-                border: 1px solid black;
-                display:flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-            .inside-popup{
-                height: 40px;
-                padding: 5px 0px 5px 0px;
-                width: 140px;
-                text-align: left;
-                display:flex;
-                align-items: center;
-                @include link;
-            }
-            .inside-popup:hover{
-                cursor: pointer;
-            }
-            .arrow-up {
-                width: 0; 
-                height: 0; 
-
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 5px solid $background-color;
-                position: fixed;
-                top: 46px;
-                right: 40px;
-                z-index: 5;
-              }
-              .arrow-up-border {
-                width: 0; 
-                height: 0; 
-                border-left: 5px solid transparent;
-                border-right: 5px solid transparent;
-                border-bottom: 5px solid black;
-                position: fixed;
-                top: 45px;
-                right: 40px;
-              }
-              .pop{
-                  right: -200px
-              }
+.popup{
+    width: 120px;
+    height: 100px;
+    background-color: $background-color;
+    position: fixed;
+    top: 27px;
+    right: 10px;
+    border: 1px solid black;
+    @include flex-container-column;
+}
+.inside-popup{
+    height: 40px;
+    padding: 5px 0px 5px 0px;
+    width: 100px;
+    text-align: left;
+    display:flex;
+    align-items: center;
+    @include link;
+    &:hover{
+        cursor: pointer;        
+    }
+}
+.arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid $background-color;
+    position: fixed;
+    top: 23px;
+    right: 17px;
+    z-index: 5;
+}
+.arrow-up-border {
+    width: 0; 
+    height: 0; 
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid black;
+    position: fixed;
+    top: 22px;
+    right: 17px;
+}
+.pop{
+    right: -200px
+}
 
 
 @media (min-width: $breakpoint-tablet){
@@ -134,19 +126,42 @@
         font-size: $tablet-font-size;
     }
     .slide{
-        width: calc(100vw - 120px);
-        margin-left: 120px;
+        width: calc(100vw - 180px);
+        margin-left: 180px;
     }
     .menu{
-        width: 120px;
+        width: 180px;
 
     }
     .sld{
-        left: -122px;
+        left: -182px;
     }
     .nav-logo {
         width: 40px;
     } 
+    .popup{
+        width: 160px;
+        height: 150px;
+        top: 44px;
+        right: 25px;
+    }
+    .inside-popup{
+        height: 40px;
+        padding: 5px 0px 5px 0px;
+        width: 140px;
+    }
+    .arrow-up {
+        top: 41px;
+        right: 32px;
+        z-index: 5;
+    }
+    .arrow-up-border {
+        top: 40px;
+        right: 32px;
+    }
+    .pop{
+        right: -200px
+    }
 }
 
 @media (min-width: $breakpoint-desktop){
@@ -171,4 +186,21 @@
     .nav-logo {
         width: 50px;
     } 
+    .popup{
+        width: 160px;
+        height: 150px;
+        top: 50px;
+        right: 30px;
+    }
+    .arrow-up {
+        top: 46px;
+        right: 40px;
+    }
+    .arrow-up-border {
+        top: 45px;
+        right: 40px;
+    }
+    .pop{
+        right: -200px
+    }
 }

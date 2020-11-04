@@ -8,12 +8,13 @@ $dm-bg-color: #15202b;
 $dm-text-color: rgb(200, 200, 200);
 $mobile-font-size: 10px;
 $tablet-font-size: 16px;
-$desktop-font-size: 20px;
+$sec-tablet-font-size: 14px;
+$desktop-font-size: 18px;
 $sec-desktop-font-size: 14px;
 $primary-font-family: monospace;
 
 
-$breakpoint-tablet: 768px;
+$breakpoint-tablet: 550px;
 $breakpoint-desktop: 901px;
 //Overall Mixin
 @mixin link{
@@ -52,7 +53,6 @@ $breakpoint-desktop: 901px;
     font-size: 16px;
     text-indent: 5px;
     font-family: $primary-font-family;
-    // background-color: #eee;
 }
 @mixin auth-button{
     background-color: #e7e7e7;

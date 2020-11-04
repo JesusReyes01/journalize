@@ -20,11 +20,8 @@ function Menu(props) {
             .catch(err => console.log('get entry request failed'))
     },[location])
 
-
-    let mappedEntries = state.entries
-        .map( el => {
+    let mappedEntries = state.entries.map( el => {
         return (
-            
             <Link className ='menu-link' to={`/entry/${el.entry_id}`} key={el.entry_id} > 
                 <div className='menu-entry'>
                     <span>{el.title}</span>

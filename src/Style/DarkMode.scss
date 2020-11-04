@@ -5,36 +5,32 @@ body.dark{
 }
 body.dark a{
     @include dark;
-}
-body.dark a:hover{
-    background-color: $dm-text-color;
-    color: $dm-bg-color;
+    &:hover{
+        background-color: $dm-text-color;
+        color: $dm-bg-color;
+    }
 }
 body.dark button{
     @include dark;
-}
-body.dark button:hover{
-    background-color: $dm-text-color;
-    color: $dm-bg-color;
+    &:hover{
+        background-color: $dm-text-color;
+        color: $dm-bg-color
+    }
 }
 body.dark div{
     @include dark;
 }
 body.dark input{
     @include dark;
-    
-    // background-color: gray;
 }
 body.dark textarea{
     @include dark;
-    // background-color: gray;
 }
 body.dark::-webkit-scrollbar {
     width: .5em;
 }
 body.dark::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-    // outline: 1px solid slategrey;
     border-radius: 6px;
   }
 body.dark div::-webkit-scrollbar {
@@ -42,7 +38,6 @@ body.dark div::-webkit-scrollbar {
 }
 body.dark div::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-    // outline: 1px solid slategrey;
     border-radius: 6px;
 }
 body.dark textarea::-webkit-scrollbar {
@@ -50,26 +45,45 @@ body.dark textarea::-webkit-scrollbar {
 }
 body.dark textarea::-webkit-scrollbar-thumb {
     background-color: darkgrey;
-    // outline: 1px solid slategrey;
     border-radius: 6px;
 }
 .arrow-up.dark {
-border:none;
-    top: 42px;
-    right: 40px;
-    
-    
+    border:none;
+
 }
 .arrow-up-border.dark{
-    border-top: 5px solid transparent;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid white;
-    position: fixed;
-    top: 40px;
-    right: 46px;
-    z-index:7;
+    border:none;
+
 }
 .pop.dark{
     right: -200px
+}
+.inside-popup.dark:hover{
+    background-color: $dm-text-color;
+    color: $dm-bg-color;
+}
+
+@media (min-width: $breakpoint-tablet){
+    .arrow-up-border.dark{
+        border-top: 5px solid transparent;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid white;
+        position: fixed;
+        top: 34px;
+        right: 32px; 
+        z-index:7;
+    }
+    .pop.dark{
+        right: -200px
+    }
+}
+@media (min-width: $breakpoint-desktop){
+    .arrow-up-border.dark{
+        top: 40px;
+        right: 46px; 
+    }
+    .pop.dark{
+        right: -200px
+    }
 }

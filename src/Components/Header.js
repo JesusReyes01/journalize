@@ -21,15 +21,21 @@ function Header(props) {
         const body = document.getElementsByTagName('body')[0];
         const upArrow = document.querySelector('.arrow-up');
         const upArrowBorder = document.getElementsByClassName('arrow-up-border')[0];
+        const insidePopUp0 = document.getElementsByClassName('inside-popup')[0];
+        const insidePopUp1 = document.getElementsByClassName('inside-popup')[1];
         if(props.darkModeReducer.darkMode.data === true){
             body.classList.add('dark');
             upArrow.classList.add('dark');
             upArrowBorder.classList.add('dark');
+            insidePopUp0.classList.add('dark');
+            insidePopUp1.classList.add('dark');
         }
         else{
             body.classList.remove('dark');
             upArrow.classList.remove('dark');
             upArrowBorder.classList.remove('dark');
+            insidePopUp0.classList.remove('dark');
+            insidePopUp1.classList.remove('dark');
         }
     },[props.darkModeReducer.darkMode.data])
 
@@ -47,9 +53,13 @@ function Header(props) {
         const body = document.getElementsByTagName('body')[0];
         const upArrow = document.querySelector('.arrow-up');
         const upArrowBorder = document.getElementsByClassName('arrow-up-border')[0];
+        const insidePopUp0 = document.getElementsByClassName('inside-popup')[0];
+        const insidePopUp1 = document.getElementsByClassName('inside-popup')[1];
         body.classList.remove('dark');
         upArrow.classList.remove('dark');
         upArrowBorder.classList.remove('dark');
+        insidePopUp0.classList.remove('dark');
+        insidePopUp1.classList.remove('dark');
     }
 
     return(

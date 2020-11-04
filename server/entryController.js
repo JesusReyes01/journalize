@@ -9,7 +9,10 @@ module.exports = {
         })
         if(search){
             const filteredEntries = entries.filter( el =>{
-                return el.title.toLowerCase().includes(search.toLowerCase())
+                return (el.title.toLowerCase().includes(search.toLowerCase())||
+                        el.content.toLowerCase().includes(search.toLowerCase())||
+                        el.date[0].toLowerCase().includes(search.toLowerCase())
+                )
             })
         return res.status(200).send(filteredEntries)
         }
@@ -18,12 +21,10 @@ module.exports = {
     getSingleEntry: async(req,res) => {
         const db = req.app.get('db');
         const {id} = req.params;
-        // console.log(id)
         const entry = await db.get_single_entry(id)
         entry.forEach( el => {
             return el.date = el.date.toLocaleString().split(',')
         })
-        console.log(entry)
         res.status(200).send(entry[0])
     },
     createEntry: async(req,res) => {

@@ -79,10 +79,10 @@
     transition-duration: 0.5s;
     font-size: $mobile-font-size;
     @include link;
-}
-.new-entry-btn:hover{
-    background-color: black;
-    color: white;
+    &:hover{
+        background-color: $text-color;
+        color: $background-color;
+    }
 }
 .search-flex{
     width: 100%;
@@ -100,10 +100,10 @@
     transition-duration: 0.5s;
     background-color: white;
     font-family : inherit;
-}
-.search-flex button:hover {
-    background-color: black;
-    color: white;
+    &:hover {
+        background-color: $text-color;
+        color: $background-color;
+    }
 }
 
 .dashboard-table{

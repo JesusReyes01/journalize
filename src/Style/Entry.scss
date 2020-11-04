@@ -14,14 +14,14 @@
     border: 2px solid black;
     transition-duration: 0.5s;
     background-color: white;
-}
-.up-entry-save-button:hover {
-    background-color: black;
-    color: white;
+    &:hover {
+        background-color: $text-color;
+        color: $background-color;
+    }
 }
 .up-new-entry{
-    width: 250px;
-    height: 342px;
+    width: 90vw;
+    height: calc(100vh - 80px);
     margin: 50px auto;
     border: 2px solid black;
 }
@@ -29,14 +29,14 @@
     height: 40px;
     width: 100%;
     @include title-input;
-    font-size: 12px;
+    font-size: 14px;
     &:focus{
     outline: none; 
     }
 }
 .up-entry-content{
     width: 90%;
-    height: 100%;
+    height: calc(100vh - 200px);
     border: none;
     margin-top:15px;
     font-size:$mobile-font-size;
@@ -56,15 +56,15 @@
 //Calender
 .up-date-toggle{
     font-size:$mobile-font-size;
-}
-.up-date-toggle:hover{
-    cursor: pointer;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .up-calender{
     width: 250px;
     height: 100px;
-    color: black;
+    color: $text-color;
     font-size: 11px;
     font-family: monospace;
     position: fixed;
@@ -77,19 +77,19 @@
 
 @media (min-width: $breakpoint-tablet){
     .up-new-entry{
-        width: 525px;
-        height: 685px;
+        width: 90vw;
+        height: calc(100vh - 120px);
         margin: 80px auto;
     }
     .up-title-input{
         height: 50px;
-        font-size: 18px;
+        font-size: 23px;
     }
     .up-date-toggle{
         font-size:$tablet-font-size;
     }
     .up-react-calendar__month-view__days__day {
-        font-size: 14px;
+        font-size: $sec-tablet-font-size;
     }
     .up-calender{
         width: 300px;
@@ -100,8 +100,8 @@
         font-size: 12px;
     }
     .up-entry-content{
-        height: 500px;
-        font-size:$tablet-font-size;
+        height: calc(100vh - 240px);
+        font-size:$sec-tablet-font-size;
     }
 }
 
@@ -125,7 +125,7 @@
         top: 19vh;
     }
     .up-entry-save-button{
-        font-size: $desktop-font-size;
+        font-size: $sec-desktop-font-size;
     }
     .up-entry-content{
         height: 950px;

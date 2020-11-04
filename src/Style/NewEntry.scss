@@ -13,16 +13,16 @@
     border: 2px solid black;
     transition-duration: 0.5s;
     background-color: white;
-}
-.entry-save-button:hover {
-    background-color: black;
-    color: white;
+    &:hover {
+        background-color: $text-color;
+        color: $background-color;
+    }
 }
 //New Entry Flex
 .new-entry{
-    width: 250px;
-    height: 342px;
-    margin: 0px auto;
+    width: 90vw;
+    height: calc(100vh - 80px);
+    margin: 50px auto;
     border: 2px solid black;
 }
 .title-input{
@@ -57,15 +57,15 @@
 //Calender
 .date-toggle{
     font-size:$mobile-font-size;
-}
-.date-toggle:hover{
-    cursor: pointer;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .calender{
     width: 250px;
     height: 100px;
-    color: black;
+    color: $text-color;
     font-size: 11px;
     font-family: monospace;
     position: fixed;
@@ -81,8 +81,8 @@
 
 @media (min-width: $breakpoint-tablet){
     .new-entry{
-        width: 525px;
-        height: 685px;
+        width: 90vw;
+        height: 900px;
         margin: 80px auto;
     }
     .title-input{
@@ -104,7 +104,7 @@
         font-size: 12px;
     }
     .entry-content{
-        height: 500px;
+        height: 550px;
         font-size:$tablet-font-size;
     }
 }
@@ -130,7 +130,7 @@
         top: 19vh;
     }
     .entry-save-button{
-        font-size: $desktop-font-size;
+        font-size: $sec-desktop-font-size;
     }
     .entry-content{
         height: 950px;
