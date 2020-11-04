@@ -16,10 +16,10 @@ app.use(express.json());
 
 //HOSTING
 app.use(express.static(__dirname + '/../build'))
-
-app.get('*', (req,res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'))
-})
+//causing axios not to work
+// app.get('*', (req,res) => {
+//     res.sendFile(path.join(__dirname, '../build/index.html'))
+// })
 
 //USER SESSION
 app.use(session({

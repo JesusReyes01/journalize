@@ -15,11 +15,13 @@ function Menu(props) {
     })
     let location = useLocation();
     useEffect(()=> {
-            axios.get('/api/entries')
-            .then(res => sState({...state, entries: res.data}))
-            .catch(err => console.log('get entry request failed'))
+            getEntries()
     },[location])
-
+    const getEntries = () => {
+        axios.get('/api/entries')
+        .then(res => sState({...state, entries: res.data}))
+        .catch(err => console.log('get entry request failed'))
+    }
     let mappedEntries = state.entries.map( el => {
         return (
             <Link className ='menu-link' to={`/entry/${el.entry_id}`} key={el.entry_id} > 
