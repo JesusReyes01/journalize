@@ -19,6 +19,7 @@ export function getDarkMode(){
 
 export function updateDarkMode(update){
     let newDarkMode = axios.put('/api/updateDarkmode', {update})
+    console.log(newDarkMode)
     return {
         type: UPDATE_DARKMODE,
         payload: newDarkMode

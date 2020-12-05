@@ -46,6 +46,7 @@
 .nav-logo {
     @include menu;
     width: 20px;
+    padding-top: 10px;
 } 
 .header-icon{
     @include header;
@@ -56,6 +57,10 @@
 .header-logo{
     @include header;
     justify-content: center;
+
+}
+.site-title{
+    margin: 0px;
 }
 .header-drop{
     @include header;

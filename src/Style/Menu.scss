@@ -2,7 +2,7 @@
 .menu-user{
     margin: 2.5px auto;
     width: 50px;
-    height: 25px;
+    height: 23px;
     @include flex-container;
     font-size: $mobile-font-size;
 }
@@ -92,7 +92,7 @@
 @media (min-width: $breakpoint-tablet){
     .menu-user{
         width: 120px;
-        height: 45px;
+        height: 43px;
         font-size: $tablet-font-size;
     }
     .menu-view-all{
@@ -117,7 +117,7 @@
         left: 25px;
     }
     .menu-link{
-        height: 50px;
+        height: 55px;
     }
     .entry-flex{
         height: calc(100vh - 170px)
@@ -136,7 +136,7 @@
 
 .menu-user{
     width: 150px;
-    height: 55px;
+    height: 53px;
     font-size: $desktop-font-size;
 }
 .menu-view-all{
@@ -161,7 +161,7 @@
     left: 25px;
 }
 .menu-link{
-    height: 60px;
+    height: 65px;
 }
 .entry-flex{
     height: calc(100vh - 169px);

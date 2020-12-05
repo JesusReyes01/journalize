@@ -34,7 +34,7 @@ function Menu(props) {
 
     return (
         <div {...props}>
-            <div className='menu-user'>{props.authReducer.user.first_name}'s Journal</div>
+            <span className='menu-user'>{props.authReducer.user.first_name}'s Journal</span>
             <Link className='menu-new-entry' to='/new'><img className='menu-new-entry-icon' src={props.darkModeReducer.darkMode.data?newEntryLogoDarkMode:newEntryLogo} alt='New Entry' /> New Entry</Link>
             <Link className='menu-view-all' to='/dashboard'><img className='menu-view-all-icon' src={props.darkModeReducer.darkMode.data?viewAllDarkMode:viewAll} alt='home' />View All Entries</Link>
             <div className='entry-flex'>

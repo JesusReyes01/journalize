@@ -69,7 +69,7 @@ function Header(props) {
                     <div className='header-icon' onClick={slide}>&#9776;</div>
                     <div className='header-logo'>
                         <img className='nav-logo' src={props.darkModeReducer.darkMode.data?logoDarkMode:logo} alt='Logo'/>
-                        <p>Journalize</p>
+                        <p className="site-title">Journalize</p>
                     </div>
                     <div className='header-drop' onClick={popup}> 
                         {props.authReducer.user.first_name}

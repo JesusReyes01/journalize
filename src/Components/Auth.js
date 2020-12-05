@@ -12,14 +12,12 @@ function Auth(props) {
     const [state, sState] = useState({
         firstName: '',
         lastName: '',
-        email: '',
-        password: '',
+        email: 'test@gmail.com',
+        password: 'test',
         verPassword: '',
         profilePicture: '',
         registerView: false
     })
-
-
     const handleInput = (event) => {
         sState({...state, [event.target.name]: event.target.value})
     }  

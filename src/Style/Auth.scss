@@ -9,7 +9,10 @@
     @include link;
     padding: 1.5em;
     justify-content: flex-end;
-    font-size: $tablet-font-size;
+    // font-size: $tablet-font-size;
+}
+.auth-header span:hover{
+    cursor: pointer;
 }
 .auth-box{
     @include flex-container-column;
@@ -43,6 +46,10 @@
     @include auth-button;
     font-size: $tablet-font-size;
     font-family : inherit;
+    &:active{
+        background-color: rgb(66, 66, 66);
+        // color: black;
+    }
 }
 
 .change{

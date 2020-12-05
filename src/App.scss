@@ -1,4 +1,15 @@
+@import "~bootstrap/scss/bootstrap";
 .App {
     text-align: center;
-    // margin: 0 auto;
 }
+a{
+    text-decoration: none !important;
+    &:hover{
+        color:black;
+    }
+}
+*{
+    outline:none !important;
+}
+
+
