@@ -5,17 +5,20 @@ module.exports = {
         const {search} = req.query;
         let entries = await db.get_entries(user_id)
         entries.forEach( el => {
+            
             return el.date = [el.date.toDateString(), el.date.toLocaleString()]
         })
         if(search){
             const filteredEntries = entries.filter( el =>{
+
                 return (el.title.toLowerCase().includes(search.toLowerCase())||
                         el.content.toLowerCase().includes(search.toLowerCase())||
                         el.date[0].toLowerCase().includes(search.toLowerCase())
                 )
             })
-        return res.status(200).send(filteredEntries)
+            return res.status(200).send(filteredEntries)
         }
+
         return res.status(200).send(entries)
     },
     getSingleEntry: async(req,res) => {
@@ -32,7 +35,7 @@ module.exports = {
         const {title, date, img, content} = req.body;
         const {user_id} = req.session.user;
         await db.create_entry(title, date, img, content, user_id);
-        res.sendStatus(200)
+        res.sendStatus(201)
     },
     deleteEntry: (req,res) => {
         const db = req.app.get('db');
@@ -45,7 +48,7 @@ module.exports = {
         const {title, fnlDate, img, content} = req.body;
         const {id} = req.params;
         await db.update_entry(title, fnlDate, img, content, id);
-        res.sendStatus(200)
+        res.sendStatus(201)
     }
 }
 

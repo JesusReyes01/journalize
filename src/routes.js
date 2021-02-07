@@ -15,3 +15,28 @@ export default (
         <Route path='/forgotpassword' component={ForgotPassword}/>
     </Switch>
 )
+
+{/* <Route exact path='/' render={() => (
+          <ListContacts 
+          contacts={this.state.contacts}
+          onDeleteContact={this.removeContact}
+          />
+        )}/> */}
+
+// <Route path="/create" render={({ history }) => (
+//     <CreateContact
+//       onCreateContact = {(contact)=>{
+//         this.createContact(contact)
+//         history.push('/')
+//       }}
+//     />
+//   )}/>
+
+{/* <Link to={{
+ pathname: '/courses',
+ search: '?sort=name',
+ hash: '#the-hash',
+ state: { fromDashboard: true }
+}}>
+ Courses
+</Link> */}

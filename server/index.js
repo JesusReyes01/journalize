@@ -7,7 +7,6 @@ const entryCtrl = require('./entryController');
 const darkModeCtrl = require('./darkModeController');
 const nodeMailerCtrl = require('./nodeMailerController');
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
-const path = require('path')
 
 const app = express();
 

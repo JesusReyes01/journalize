@@ -5,7 +5,7 @@ import {useLocation} from 'react-router-dom';
 import '../Style/Entry.scss';
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css';
-
+0
 function Entry(props) {
     const [state, sState] = useState({
         title: '',
@@ -35,7 +35,7 @@ function Entry(props) {
                         date: res.data.date,
                         img: res.data.img,
                         content: res.data.content })})
-        .catch(err => console.log(err.request));
+            .catch(err => console.log(err.request));
     }
     const handleDelete = () => {
         const {entryId} = props.match.params;
